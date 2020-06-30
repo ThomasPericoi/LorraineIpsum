@@ -25,10 +25,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ThomasPericoi/PhilippeMarmotte.git"
+    "url": "git+https://github.com/ThomasPericoi/LorraineIpsum.git"
   },
   "bugs": {
-    "url": "https://github.com/ThomasPericoi/PhilippeMarmotte/issues"
+    "url": "https://github.com/ThomasPericoi/LorraineIpsum/issues"
   },
-  "homepage": "https://philippemarmotte.fr/"
+  "homepage": "https://lorraineipsum.fr/"
 }
