@@ -148,3 +148,17 @@ function copyToClipboard(value) {
   // Cleaning
   document.body.removeChild(temporaryInput);
 }
+
+/* Functions about Google and searching */
+
+function searchOnGoogle(query) {
+  window.open("https://google.com/search?q=" + query, "newTab");
+}
+
+function searchOnGoogleImage(query) {
+  window.open("https://google.com/search?q=" + query + "&tbm=isch", "newTab");
+}
+
+function openUrl(query) {
+  window.open(query, "newTab");
+}

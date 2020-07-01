@@ -2,9 +2,8 @@
 
 var asciis = [
   {
-    name: "anteater",
     type: "animal",
-    color: "LightSlateGray",
+    name: "anteater",
     art: String.raw` 
        _.---._    /\\
     ./'       "--'\//
@@ -14,13 +13,13 @@ var asciis = [
    / /  \ \  | |\ \  \7
     "     "    "  "
     `,
+    color: "LightSlateGray",
+    height: 7,
     author: "VK",
   },
-
   {
-    name: "armadillo",
     type: "animal",
-    color: "RosyBrown",
+    name: "armadillo",
     art: String.raw` 
              _.-----__    
           ,:::://///,:::-. 
@@ -30,13 +29,13 @@ var asciis = [
 -===~__-'\__X_'''''\_____/~'-.__'0
            ~~        ~~       
     `,
+    color: "RosyBrown",
+    height: 7,
     author: "Seal do Mar",
   },
-
   {
-    name: "bat",
     type: "animal",
-    color: "DimGray",
+    name: "bat",
     art: String.raw` 
   /\                 /\
  / \'._   (\_/)   _.'/ \
@@ -46,13 +45,13 @@ var asciis = [
          \(/|\)/
           " ' "
     `,
+    color: "DimGray",
+    height: 7,
     author: "jgs",
   },
-
   {
-    name: "beaver",
     type: "animal",
-    color: "DarkGoldenrod",
+    name: "beaver",
     art: String.raw` 
             ___
          .="   "=._.---.
@@ -62,13 +61,13 @@ var asciis = [
 _,..._|      )_-\ \_=.\
 '-....-''------)))'=-'"''"
     `,
+    color: "DarkGoldenrod",
+    height: 7,
     author: "jgs",
   },
-
   {
-    name: "cat",
     type: "animal",
-    color: "DarkSlateGrey",
+    name: "cat",
     art: String.raw` 
  )\   _,
  | "^" (
@@ -83,13 +82,13 @@ _,..._|      )_-\ \_=.\
   )| ( (__,</
 c{{i.}}=oo-^
     `,
+    color: "DarkSlateGrey",
+    height: 12,
     author: "",
   },
-
   {
-    name: "crab",
     type: "animal",
-    color: "Red",
+    name: "crab",
     art: String.raw` 
    __       __    
   / <'     '> \
@@ -100,13 +99,13 @@ c{{i.}}=oo-^
   .==')___('==.
  ' .='     '=. '
     `,
+    color: "Red",
+    height: 8,
     author: "",
   },
-
   {
-    name: "deer",
     type: "animal",
-    color: "Tan",
+    name: "deer",
     art: String.raw` 
     (      )
     ))    ((
@@ -124,13 +123,13 @@ c{{i.}}=oo-^
     '\_    _/'
        ~~~~
     `,
+    color: "Tan",
+    height: 15,
     author: "",
   },
-
   {
-    name: "dog",
     type: "animal",
-    color: "Tan",
+    name: "dog",
     art: String.raw` 
             /)-_-(\
              (o o)
@@ -141,13 +140,13 @@ c{{i.}}=oo-^
      //     ||
      |\     |\
     `,
+    color: "Tan",
+    height: 8,
     author: "",
   },
-
   {
-    name: "duck",
     type: "animal",
-    color: "DarkGray",
+    name: "duck",
     art: String.raw` 
       ,~~.
      (  9 )-_,
@@ -157,13 +156,13 @@ c{{i.}}=oo-^
    '~j-'  
      "=:
     `,
+    color: "DarkGray",
+    height: 7,
     author: "",
   },
-
   {
-    name: "elephant",
     type: "animal",
-    color: "Silver",
+    name: "elephant",
     art: String.raw` 
    ___      ___
   /   \____/   \
@@ -177,13 +176,13 @@ c{{i.}}=oo-^
    |   |~~|   ||   |
    'ooo'  'ooo''ooo'
     `,
+    color: "Silver",
+    height: 11,
     author: "Hamilton Furtado",
   },
-
   {
-    name: "fish",
     type: "animal",
-    color: "MediumTurquoise",
+    name: "fish",
     art: String.raw` 
       /'·.¸
      /¸...¸':·
@@ -192,13 +191,13 @@ c{{i.}}=oo-^
  °·.¸¸'·  ¸.·´\'·¸)
       \\´´\¸.·´
     `,
+    color: "MediumTurquoise",
+    height: 6,
     author: "",
   },
-
   {
-    name: "flamingo",
     type: "animal",
-    color: "Pink",
+    name: "flamingo",
     art: String.raw` 
          __
         /('o
@@ -214,13 +213,13 @@ o o
 \ |
  \|
     `,
+    color: "Pink",
+    height: 13,
     author: "",
   },
-
   {
-    name: "fox",
     type: "animal",
-    color: "DarkOrange",
+    name: "fox",
     art: String.raw` 
  /\   /\
 //\\_//\\     __/\
@@ -232,13 +231,13 @@ o o
    [ [ /  \/ _/
   _[ [ \  /_/
     `,
+    color: "DarkOrange",
+    height: 9,
     author: "",
   },
-
   {
-    name: "frog",
     type: "animal",
-    color: "SpringGreen",
+    name: "frog",
     art: String.raw` 
        _   _
       (o)-(o)
@@ -247,13 +246,13 @@ o o
 __\ _\ \___/ /_ /__
   /|  /|\ /|\  |\
     `,
+    color: "SpringGreen",
+    height: 6,
     author: "",
   },
-
   {
-    name: "hippo",
     type: "animal",
-    color: "DarkGray",
+    name: "hippo",
     art: String.raw` 
      c~~p ,---------.
 ,---'oo  )           \
@@ -263,13 +262,13 @@ __\ _\ \___/ /_ /__
       \\  |-----'|  /
       ||__|    |_|__|
     `,
+    color: "DarkGray",
+    height: 7,
     author: "",
   },
-
   {
-    name: "lion",
     type: "animal",
-    color: "Peru",
+    name: "lion",
     art: String.raw` 
             o00000000o
            o0/\0000/\0o
@@ -285,13 +284,13 @@ o.       0000/ b  d \000
     \         /_ | |__
     (___________)))))))
     `,
+    color: "Peru",
+    height: 13,
     author: "jgs",
   },
-
   {
-    name: "marmot",
     type: "animal",
-    color: "DarkGoldenrod",
+    name: "marmot",
     art: String.raw` 
        (>\---/<)
        ,'     '.
@@ -306,28 +305,27 @@ c /    \         |  |
    '._ _/_  ___.'-\\\
       '--\\\
     `,
+    color: "DarkGoldenrod",
+    height: 12,
     author: "",
   },
-
   {
-    name: "mouse",
     type: "animal",
-    color: "Grey",
+    name: "mouse",
     art: String.raw` 
- 
 (q\_/p)
  /. .\.-""""-.      __
 =\_t_/=    /  '\   (
   )\ ))__ _\    |___)
  nn-nn'  'nn---'
     `,
+    color: "Grey",
+    height: 5,
     author: "",
   },
-
   {
-    name: "parrot",
     type: "animal",
-    color: "DodgerBlue",
+    name: "parrot",
     art: String.raw` 
                           .
                           | \/|
@@ -346,13 +344,13 @@ c /    \         |  |
                    \ \ '.)
                     '-'-'
     `,
+    color: "DodgerBlue",
+    height: 16,
     author: "",
   },
-
   {
-    name: "pig",
     type: "animal",
-    color: "Pink",
+    name: "pig",
     art: String.raw` 
        9
   ,--.-'-,--.
@@ -364,13 +362,13 @@ c /    \         |  |
    | |---| |
    [_]   [_]
     `,
+    color: "Pink",
+    height: 9,
     author: "",
   },
-
   {
-    name: "pinguin",
     type: "animal",
-    color: "Black",
+    name: "pinguin",
     art: String.raw` 
    __
 -=(o '.
@@ -379,13 +377,13 @@ c /    \         |  |
    '|  ||
     _\_):,_
     `,
+    color: "Black",
+    height: 6,
     author: "",
   },
-
   {
-    name: "teckel",
     type: "animal",
-    color: "DarkGoldenrod",
+    name: "teckel",
     art: String.raw` 
                         __
  ,                    ," e'--o
@@ -396,13 +394,13 @@ c /    \         |  |
 (( (              (( (
 '' '               ''-'
     `,
+    color: "DarkGoldenrod",
+    height: 8,
     author: "hjw",
   },
-
   {
-    name: "turtle",
     type: "animal",
-    color: "LimeGreen",
+    name: "turtle",
     art: String.raw` 
                 __
      .,-;-;-,. /'_\
@@ -411,13 +409,13 @@ c /    \         |  |
   '/_/    /_/  \_\
    ""     ""    ""
     `,
+    color: "LimeGreen",
+    height: 6,
     author: "",
   },
-
   {
-    name: "whale",
     type: "animal",
-    color: "RoyalBlue",
+    name: "whale",
     art: String.raw` 
        .
       ":"
@@ -426,13 +424,53 @@ c /    \         |  |
   |  O        \___/  |
 ~^~^~^~^~^~^~^~^~^~^~^~^~
     `,
+    color: "RoyalBlue",
+    height: 6,
     author: "",
   },
-
   {
-    name: "flintstones",
     type: "character",
-    color: "DarkOrange",
+    name: "bender",
+    art: String.raw` 
+     ( )
+      H
+     _H_
+  .-'-.-'-.
+ /         \
+|           |
+|   .-------'._
+|  / /  '.' '. \
+|  \ \ @   @ / /
+|   '---------'
+|    _______|
+|  .'-+-+-+|
+|  '.-+-+-+|
+|    """""" |
+'-.__   __.-'
+     """
+    `,
+    color: "Silver",
+    height: 16,
+    author: "Silver Saks",
+  },
+  {
+    type: "character",
+    name: "cookieMonster",
+    art: String.raw` 
+    (o)(o)
+  w"      "w
+ W  -====-  W
+  "w      w"
+ w"""""""""w
+W            W
+    `,
+    color: "Blue",
+    height: 6,
+    author: "Randy Ransom",
+  },
+  {
+    type: "character",
+    name: "flintstones",
     art: String.raw` 
   \/________________ 
  /     _____________)
@@ -446,13 +484,35 @@ c /    \         |  |
 __|_________\______/
 \______________\./__\
     `,
+    color: "DarkOrange",
+    height: 11,
     author: "",
   },
-
   {
-    name: "homer",
     type: "character",
-    color: "Gold",
+    name: "garfield",
+    art: String.raw` 
+     .-.,     ,.-.
+    /:::\\   //:::\
+   |':':' '"' ':':'|
+  /'. .-=-. .-=-. .'\
+ /=- /     |     \ -=\
+;   |      |      |   ;
+|=-.|______|______|.-=|
+|==  \  0 /_\ 0  /  ==|
+|=   /'---( )---'\   =|
+ \   \:   .'.   :/   /
+  '\= '--'   '--' =/'
+    '-=._     _.=-'
+         '"""'
+    `,
+    color: "Orange",
+    height: 12,
+    author: "jgs",
+  },
+  {
+    type: "character",
+    name: "homer",
     art: String.raw` 
     ___
    //_\\_
@@ -469,13 +529,35 @@ __|_________\______/
    |  '.___.'
          (
     `,
+    color: "Gold",
+    height: 14,
     author: "",
   },
-
   {
-    name: "maryPoppins",
     type: "character",
-    color: "Black",
+    name: "kermit",
+    art: String.raw` 
+       .---.     .---.
+      ( -o- )---( -o- )
+      ;-...-'   '-...-;
+     /                 \
+    /                   \
+   | /_               _\ |
+   \ '.''"--.....--"''.' /
+    \  '.   '._.'   .'  /
+ _.-''.  '-.,___,.-'  .''-._
+'--._  ''-._______.-''  _.--'
+     /                 \
+    /.-''\   .'.   /''-.\
+          '.'   '.'
+    `,
+    color: "SpringGreen",
+    height: 13,
+    author: "jgs",
+  },
+  {
+    type: "character",
+    name: "maryPoppins",
     art: String.raw` 
          _
       .-' '-.
@@ -495,13 +577,13 @@ __|_________\______/
    \|/
   _/L\_
     `,
+    color: "Black",
+    height: 17,
     author: "",
   },
-
   {
-    name: "pinkPanther",
     type: "character",
-    color: "Pink",
+    name: "pinkPanther",
     art: String.raw` 
  .--.             .--.
 ( ('\\.---------.//') )
@@ -516,13 +598,13 @@ __|_________\______/
         '.___.'
           | |
     `,
+    color: "Pink",
+    height: 12,
     author: "",
   },
-
   {
-    name: "r2d2",
     type: "character",
-    color: "Blue",
+    name: "r2d2",
     art: String.raw`
     .---.
   .'_:___".
@@ -533,13 +615,32 @@ __|_________\______/
  |-/.____.'
 /___\ /___\  
     `,
-    author: "",
-  },
-
-  {
-    name: "sonic",
-    type: "character",
     color: "Blue",
+    height: 8,
+    author: "snd",
+  },
+  {
+    type: "character",
+    name: "santaClaus",
+    art: String.raw`
+   ,--.
+  ()   \
+   /    \
+ _/______\_
+(__________)
+(/  @  @  \)
+('._,()._,')
+(  '-''-'  )
+ \        /
+  \,,,,,,/
+    `,
+    color: "Red",
+    height: 10,
+    author: 'B.D.S."Don"McConnell',
+  },
+  {
+    type: "character",
+    name: "sonic",
     art: String.raw`
           .,
 .      _,'f----.._
@@ -551,13 +652,13 @@ f  o|  o|__     "'-.
 '"' ___.,'' j,-'
   '-.__.,--'
     `,
+    color: "Blue",
+    height: 9,
     author: "",
   },
-
   {
-    name: "spaceInvader",
     type: "character",
-    color: "Chartreuse",
+    name: "spaceInvader",
     art: String.raw`
          __
        _|  |_
@@ -569,13 +670,13 @@ f  o|  o|__     "'-.
   |_|_        _|_|
     |_|      |_|
     `,
+    color: "Chartreuse",
+    height: 8,
     author: "",
   },
-
   {
-    name: "squidward",
     type: "character",
-    color: "Grey",
+    name: "squidward",
     art: String.raw` 
      .--'''''''''--.
    '      .---.      '.
@@ -593,13 +694,13 @@ f  o|  o|__     "'-.
          |     |
          '.___.'
     `,
-    author: "",
+    color: "Grey",
+    height: 15,
+    author: "LGB",
   },
-
   {
-    name: "tweetieBird",
     type: "character",
-    color: "Orange",
+    name: "tweetieBird",
     art: String.raw` 
     .-"-.
    /  - -\
@@ -611,13 +712,13 @@ f  o|  o|__     "'-.
   __|||__
  ((__|__))
     `,
+    color: "Orange",
+    height: 9,
     author: "",
   },
-
   {
-    name: "yosemiteSam",
     type: "character",
-    color: "Red",
+    name: "yosemiteSam",
     art: String.raw` 
         ___ 
     .-''   ''-.
@@ -633,6 +734,8 @@ f  o|  o|__     "'-.
      \ |   | /
       \/   \/
     `,
+    color: "Red",
+    height: 13,
     author: "",
   },
 ];
