@@ -1,3 +1,43 @@
+/*____________________________________ USEFOOL FUNCTIONS ____________________________________*/
+
+function getRandomIdFromArray(arrayName) {
+  // Output
+  return Math.floor(Math.random() * arrayName.length);
+}
+
+function getRandomValueFromArray(arrayName) {
+  // Output
+  return arrayName[getRandomIdFromArray(arrayName)];
+}
+
+/*____________________________________ ASCIIS FUNCTIONS ____________________________________*/
+
+function printAsciiById(asciiId) {
+  // Output
+  console.log(
+    `%c${asciis[asciiId].art}`,
+    `color: ${asciis[asciiId].color}; font-family: monospace;`
+  );
+}
+
+function printAsciiByName(asciiName) {
+  // Process
+  selectedAscii = asciis.findIndex((ascii) => ascii.name === asciiName); // Select ascii according the name
+  // Output
+  printAsciiById(selectedAscii);
+}
+
+function printAsciiRandom(criteria = "all") {
+  // Process
+  var selectedAsciis = asciis.filter((ascii) => ascii.type === criteria); // Select the asciis matching the criteria
+  selectedAsciis.length < 1 && (selectedAsciis = Object.values(asciis)); // If empty or nothing is matching, select them all
+  randomAscii = getRandomValueFromArray(selectedAsciis);
+  // Output
+  printAsciiByName(randomAscii.name);
+}
+
+/*____________________________________ ASCIIS LIBRAIRY ____________________________________*/
+
 /*____________________________________ ASCIIS LIBRAIRY ____________________________________*/
 
 var asciis = [
@@ -15,7 +55,7 @@ var asciis = [
     `,
     color: "LightSlateGray",
     height: 7,
-    author: "VK",
+    author: "Veronica Karlsson",
   },
   {
     type: "animal",
@@ -47,7 +87,7 @@ var asciis = [
     `,
     color: "DimGray",
     height: 7,
-    author: "jgs",
+    author: "Joan G. Stark",
   },
   {
     type: "animal",
@@ -63,7 +103,7 @@ _,..._|      )_-\ \_=.\
     `,
     color: "DarkGoldenrod",
     height: 7,
-    author: "jgs",
+    author: "Joan G. Stark",
   },
   {
     type: "animal",
@@ -286,7 +326,26 @@ o.       0000/ b  d \000
     `,
     color: "Peru",
     height: 13,
-    author: "jgs",
+    author: "Joan G. Stark",
+  },
+  {
+    type: "animal",
+    name: "marbles",
+    art: String.raw` 
+         __
+        /  \
+       / ..|\
+      (_\  |_)
+      /  \@' 
+     /     \
+_   /  '   |
+\\/  \  | _\
+ \   /_ || \\_
+  \____)|_) \_)
+    `,
+    color: "Brown",
+    height: 10,
+    author: "",
   },
   {
     type: "animal",
@@ -307,7 +366,7 @@ c /    \         |  |
     `,
     color: "DarkGoldenrod",
     height: 12,
-    author: "",
+    author: "hjw",
   },
   {
     type: "animal",
@@ -426,7 +485,7 @@ c /    \         |  |
     `,
     color: "RoyalBlue",
     height: 6,
-    author: "",
+    author: "Riitta Rasimus",
   },
   {
     type: "character",
@@ -508,7 +567,7 @@ __|_________\______/
     `,
     color: "Orange",
     height: 12,
-    author: "jgs",
+    author: "Joan G. Stark",
   },
   {
     type: "character",
@@ -553,7 +612,7 @@ __|_________\______/
     `,
     color: "SpringGreen",
     height: 13,
-    author: "jgs",
+    author: "Joan G. Stark",
   },
   {
     type: "character",

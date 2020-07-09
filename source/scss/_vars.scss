@@ -1,0 +1,163 @@
+//____________________________________ COLORS ____________________________________
+
+// Ultra classic colors
+
+$black: #000000;
+$blue: #0000ff;
+$brown: #a52a2a;
+$green: #00ff00;
+$orange: #ffa500;
+$pink: #ffc0cb;
+$purple: #800080;
+$red: #ff0000;
+$yellow: #ffff00;
+$white: #ffffff;
+
+// Classic colors
+
+$alice-blue: #f0f8ff;
+$almond: #efdecd;
+$almost-white: #f9f9f9;
+$amber: #ffbf00;
+$amethyst: #9966cc;
+$apple: #4fa83d;
+$armadillo: #433e37;
+$azure: #007fff;
+$banana-yellow: #ffe135;
+$beige: #f5f5dc;
+$bistre: #3d2b1f;
+$bleu-de-france: #318ce7;
+$bourbon: #ba6f1e;
+$brick-red: #cb4154;
+$bronze: #cd7f32;
+$buddha-gold: #c1a004;
+$cactus-green: #587156;
+$camel: #c19a6b;
+$canary-yellow: #fff600;
+$carmine: #960018;
+$carrot: #ed9121;
+$charcoal: #36454f;
+$cherry: #de3163;
+$cobalt: #0047ab;
+$coffee: #6f4e37;
+$cola: #3f2500;
+$copper: #b87333;
+$coral: #ff7f50;
+$cream: #fffdd0;
+$cyan: #00ffff;
+$denim: #1560bd;
+$desert: #c19a6b;
+$ebony: #0a0a0a;
+$eggplant: #614051;
+$emerald: #50c878;
+$flame: #e25822;
+$ghost-white: #f8f8ff;
+$fuchsia: #ff00ff;
+$gold: #ffd700;
+$iceberg: #71a6d2;
+$indian-red: #cd5c5c;
+$indigo: #4b0082;
+$ivory: #fffff0;
+$jade: #00a86b;
+$jasper: #d73b3e;
+$khaki: #c3b091;
+$klein-blue: #002fa7;
+$lava: #cf1020;
+$lemon: #fff700;
+$lilac: #c8a2c8;
+$lion: #c19a6b;
+$liver: #674c47;
+$magenta: #ff00ff;
+$magnolia: #f2e8d7;
+$malachite: #0bda51;
+$mango: #fdbe02;
+$mauve: #e0b0ff;
+$midnight: #702670;
+$mint: #3eb489;
+$mustard: #ffdb58;
+$navy: #001f3f;
+$nickel: #727472;
+$ochre: #cc7722;
+$olive: #808000;
+$onyx: #0f0f0f;
+$opal: #a8c3bc;
+$orchid: #da70d6;
+$peach: #ffe5b4;
+$pear: #d1e231;
+$pearl: #eae0c8;
+$platinum: #e5e4e2;
+$prune: #701c1c;
+$pumpkin: #ff7518;
+$rasperry: #e30b5d;
+$rich-black: #004040;
+$ruby: #e0115f;
+$rust: #b7410e;
+$saffron: #f4c430;
+$salmon: #fa8072;
+$sand: #c2b280;
+$sapphire: #2f519e;
+$school-bus: #ffd800;
+$seashell: #fff5ee;
+$sepia: #704214;
+$silver: #c0c0c0;
+$sky-blue: #87ceeb;
+$snow: #fffafa;
+$taupe: #483c32;
+$tea: #c1bab0;
+$teal: #008080;
+$tomato: #ff6347;
+$topaz: #ffc87c;
+$turquoise: #30d5c8;
+$ultramarine: #3f00ff;
+$vanilla: #f3e5ab;
+$vermilion: #d9381e;
+$wheat: #f5deb3;
+$wine: #722f37;
+
+// Brand colors
+
+$android: #a4c639;
+$coca-cola: #ed1c16;
+$facebook: #3b5998;
+$ferrari: #e32119;
+$linkedin: #007bb5;
+$netflix: #e50914;
+$snapchat: #fffc00;
+$spotify: #1db954;
+$starbucks: #00704a;
+$tumblr: #35465c;
+$twitter: #55acee;
+$whatsapp: #4dc247;
+
+//____________________________________ FONTS ____________________________________
+
+// Web Safe
+
+$arial: Arial, Helvetica, sans-serif;
+$arial-black: "Arial Black", Gadget, sans-serif;
+$comic: "Comic Sans MS", cursive, sans-serif;
+$courier: "Courier", monospace;
+$courier-new: "Courier New", Courier, monospace;
+$georgia: Georgia, serif;
+$impact: Impact, Charcoal, sans-serif;
+$lucida: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+$lucida-console: "Lucida Console", Monaco, monospace;
+$palatino: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+$tahoma: Tahoma, Geneva, sans-serif;
+$times: "Times New Roman", Times, serif;
+$trebuchet: "Trebuchet MS", Helvetica, sans-serif;
+$verdana: Verdana, Geneva, sans-serif;
+
+// Imported
+
+//____________________________________ BREAKPOINTS ____________________________________
+
+$xs: 0px;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+//____________________________________ MY VARIABLES ____________________________________
+
+$primary-font: $courier;
