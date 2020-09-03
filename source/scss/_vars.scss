@@ -129,6 +129,10 @@ $tumblr: #35465c;
 $twitter: #55acee;
 $whatsapp: #4dc247;
 
+// Custom
+
+$lorraine-yellow: #ffd701;
+
 //____________________________________ FONTS ____________________________________
 
 // Web Safe
@@ -149,15 +153,19 @@ $trebuchet: "Trebuchet MS", Helvetica, sans-serif;
 $verdana: Verdana, Geneva, sans-serif;
 
 // Imported
+$playfair: "Playfair Display", serif;
 
 //____________________________________ BREAKPOINTS ____________________________________
 
-$xs: 0px;
-$sm: 576px;
-$md: 768px;
-$lg: 992px;
-$xl: 1200px;
+$xs-max: 575px;
+$sm-min: 576px;
+$sm-max: 767px;
+$md-min: 768px;
+$md-max: 991px;
+$lg-min: 992px;
+$lg-max: 1199px;
+$xl-min: 1200px;
 
 //____________________________________ MY VARIABLES ____________________________________
 
-$primary-font: $courier;
+$primary-font: $playfair;

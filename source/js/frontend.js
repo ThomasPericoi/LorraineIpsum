@@ -2,26 +2,31 @@
 
 /* Lorraine Ipsum Frontend */
 
-var btnSmall = document.getElementById("btn-small");
-var btnLarge = document.getElementById("btn-large");
-var btnRandom = document.getElementById("btn-random");
+var intro = document.getElementById("intro");
+var btnStart = document.getElementById("btn-start");
+
+var generatedContent = document.getElementById("generated-content");
+var btnGenerate = document.getElementById("btn-generate");
 var btnCopy = document.getElementById("btn-copy");
-var content = document.getElementById("content");
 
-btnSmall.addEventListener("click", () => {
-  content.innerHTML = generateParagraph("small");
+/* Intro */
+
+btnStart.addEventListener("click", () => {
+  document.body.classList.add("started");
+
+  setTimeout(() => {
+    intro.style.display = "none";
+  }, 800);
 });
 
-btnLarge.addEventListener("click", () => {
-  content.innerHTML = generateParagraph("large");
-});
+/* Process */
 
-btnRandom.addEventListener("click", () => {
-  content.innerHTML = generateParagraph();
+btnGenerate.addEventListener("click", () => {
+  generatedContent.innerHTML = generateParagraph();
 });
 
 btnCopy.addEventListener("click", () => {
-  copyToClipboard(content.innerHTML);
+  copyToClipboard(content.textContent);
 });
 
 /* Init */

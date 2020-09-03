@@ -1,5 +1,6 @@
 /*____________________________________ IMPORT ____________________________________*/
 /* Font Import */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap");
 /*____________________________________ RESET ____________________________________*/
 /* Normalize Reset (reduced) */
 body {
@@ -139,7 +140,7 @@ template {
 
 /* My reset */
 * {
-  font-family: "Courier", monospace;
+  font-family: "Playfair Display", serif;
   color: #0a0a0a; }
 
 body {
@@ -178,7 +179,120 @@ body {
   -webkit-animation: fadeOut ease 1s;
           animation: fadeOut ease 1s; }
 
+/* fadeIn */
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+.fade-in {
+  -webkit-animation: fadeIn ease 1s;
+          animation: fadeIn ease 1s; }
+
+/* fadeOut */
+@keyframes fadeOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+.fadeOut {
+  -webkit-animation: fadeOut ease 1s;
+          animation: fadeOut ease 1s; }
+
 /*____________________________________ COMPONENTS ____________________________________*/
+.btn {
+  padding: 1.15rem 2rem;
+  position: relative;
+  font-size: 13px;
+  font-weight: 600;
+  color: #111;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: transparent;
+  border: 1px solid #111;
+  overflow: hidden; }
+  .btn:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    background-color: #111;
+    transform: translateY(calc(100% - 3px));
+    transition: transform 0.4s; }
+  .btn:hover:before {
+    transform: translateY(-100%); }
+
+#intro {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  opacity: 1;
+  transition: opacity ease 0.8s; }
+  .started #intro {
+    opacity: 0; }
+  #intro .intro-image {
+    width: 130px;
+    height: 130px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border: 2px dashed #111;
+    border-radius: 50%; }
+  #intro h1 {
+    text-align: center;
+    font-size: 2em; }
+    @media screen and (min-width: 575px) {
+      #intro h1 {
+        font-size: 3em; } }
+  #intro .credits {
+    position: absolute;
+    bottom: 15px;
+    font-size: 0.65em; }
+    @media screen and (min-width: 575px) {
+      #intro .credits {
+        font-size: 0.8em; } }
+
 body {
-  background: url(../img/lorraineFlag.svg) no-repeat;
-  background-size: cover; }
+  font-size: 1.2em;
+  background-color: #ffd701;
+  overflow: hidden; }
+  body.started {
+    overflow: auto; }
+  @media screen and (min-width: 575px) {
+    body {
+      font-size: 1.5em; } }
+
+#content {
+  opacity: 0;
+  transition: opacity ease 1.2s 1s; }
+  .started #content {
+    opacity: 1; }
+  #content #generated-content {
+    padding: 15px;
+    margin-bottom: 90px; }
+    @media screen and (min-width: 575px) {
+      #content #generated-content {
+        padding: 30px; } }
+  #content .options {
+    width: 100%;
+    height: 90px;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffd701;
+    box-sizing: border-box; }
+    #content .options .btn {
+      margin: 7.5px; }

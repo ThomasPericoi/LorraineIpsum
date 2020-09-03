@@ -3,8 +3,58 @@
 @import "_reset.scss";
 @import "_animations.scss";
 @import "_components.scss";
+@import "_intro.scss";
 
 body {
-  background: url(../img/lorraineFlag.svg) no-repeat;
-  background-size: cover;
+  font-size: 1.2em;
+
+  background-color: $lorraine-yellow;
+
+  overflow: hidden;
+
+  &.started {
+    overflow: auto;
+  }
+
+  @media screen and (min-width: $xs-max) {
+    font-size: 1.5em;
+  }
+}
+
+#content {
+  opacity: 0;
+
+  transition: opacity ease 1.2s 1s;
+
+  .started & {
+    opacity: 1;
+  }
+
+  #generated-content {
+    padding: 15px;
+    margin-bottom: 90px;
+
+    @media screen and (min-width: $xs-max) {
+      padding: 30px;
+    }
+  }
+
+  .options {
+    width: 100%;
+    height: 90px;
+    position: fixed;
+    bottom: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: $lorraine-yellow;
+
+    box-sizing: border-box;
+
+    .btn {
+      margin: 7.5px;
+    }
+  }
 }

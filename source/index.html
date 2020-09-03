@@ -38,6 +38,9 @@
       content="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Flag_of_Lorraine.svg/1200px-Flag_of_Lorraine.svg.png"
     />
 
+    <!-- Chrome Theme -->
+    <meta name="theme-color" content="#ffb301" />
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
       async
@@ -55,24 +58,36 @@
   </head>
 
   <body>
-    <div class="container">
-      <div id="content" class="fadeIn">Lorraine Ipsum...</div>
+    <div id="intro">
+      <img
+        class="intro-image fade-in"
+        src="img/lorraineFlag.svg"
+        alt="Drapeau de la Lorraine"
+      />
+      <h1 class="fade-in">Lorraine Ipsum</h1>
+      <button id="btn-start" class="btn" value="Start">Ça gèths ?</button>
 
-      <div class="button-container">
-        <button id="btn-small" class="btn" value="Small">
-          Petit paragraphe
-        </button>
-        <button id="btn-large" class="btn" value="Large">
-          Large paragraphe
-        </button>
-        <button id="btn-random" class="btn" value="Classic">
-          Taille aléatoire
-        </button>
-        <button id="btn-copy" class="btn" value="Copy">
-          Copier
-        </button>
+      <div class="credits">
+        Mamaillé par
+        <a
+          href="https://github.com/ThomasPericoi/PhilippeMarmotte"
+          target="_blank"
+          id="btn-github"
+          title="Le repository associé au projet"
+          alt="GitHub"
+          >Thomas Pericoi</a
+        >
       </div>
     </div>
+
+    <div id="content">
+      <div id="generated-content">Lorraine Ipsum</div>
+      <div class="options">
+        <button id="btn-generate" class="btn" value="Small">Générer</button>
+        <button id="btn-copy" class="btn" value="Copy">Copier</button>
+      </div>
+    </div>
+
     <script type="text/javascript" src="js/main.js"></script>
   </body>
 </html>

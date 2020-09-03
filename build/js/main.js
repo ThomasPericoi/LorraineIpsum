@@ -803,26 +803,31 @@ f  o|  o|__     "'-.
 
 /* Lorraine Ipsum Frontend */
 
-var btnSmall = document.getElementById("btn-small");
-var btnLarge = document.getElementById("btn-large");
-var btnRandom = document.getElementById("btn-random");
+var intro = document.getElementById("intro");
+var btnStart = document.getElementById("btn-start");
+
+var generatedContent = document.getElementById("generated-content");
+var btnGenerate = document.getElementById("btn-generate");
 var btnCopy = document.getElementById("btn-copy");
-var content = document.getElementById("content");
 
-btnSmall.addEventListener("click", () => {
-  content.innerHTML = generateParagraph("small");
+/* Intro */
+
+btnStart.addEventListener("click", () => {
+  document.body.classList.add("started");
+
+  setTimeout(() => {
+    intro.style.display = "none";
+  }, 800);
 });
 
-btnLarge.addEventListener("click", () => {
-  content.innerHTML = generateParagraph("large");
-});
+/* Process */
 
-btnRandom.addEventListener("click", () => {
-  content.innerHTML = generateParagraph();
+btnGenerate.addEventListener("click", () => {
+  generatedContent.innerHTML = generateParagraph();
 });
 
 btnCopy.addEventListener("click", () => {
-  copyToClipboard(content.innerHTML);
+  copyToClipboard(content.textContent);
 });
 
 /* Init */
@@ -928,6 +933,11 @@ function isVowel(x) {
 function beautifyNumber(x) {
   // Output
   return x.toString().replace(/\B(?!\.\d*)(?=(\d{3})+(?!\d))/g, " ");
+}
+
+function countCharacter(string, character) {
+  // Output
+  return string.split(character).length - 1;
 }
 
 /* Functions about styles */
@@ -3346,21 +3356,25 @@ function generateParagraph(size = "random") {
   // Var(s)
   var paragraph = "Lorraine Ipsum ";
   if (Number.isInteger(size)) {
-    var wordCount = size;
-  } else if (size === "small") {
-    var wordCount = 10;
-  } else if (size === "large") {
-    var wordCount = 50;
+    var wordCount = size - 2;
   } else {
     var wordCount = getRandomIntBetween(5, 40);
   }
 
   // Process
-  for (let i = 0; i < wordCount - 1; i++) {
-    var wordEnding = probability(10) ? ", " : " ";
-    paragraph += getRandomValueFromArray(villesLorraine) + wordEnding;
+  for (let i = 0; i < wordCount; ) {
+    var city = getRandomValueFromArray(villesLorraine);
+
+    if (i == wordCount - 1) {
+      var wordEnding = ".";
+    } else {
+      var wordEnding = probability(10) ? ", " : " ";
+    }
+
+    paragraph += city + wordEnding;
+
+    i += 1 + countCharacter(city, " ");
   }
-  paragraph += getRandomValueFromArray(villesLorraine) + ".";
 
   // Output
   return paragraph;
