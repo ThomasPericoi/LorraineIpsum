@@ -807,6 +807,7 @@ var intro = document.getElementById("intro");
 var btnStart = document.getElementById("btn-start");
 
 var generatedContent = document.getElementById("generated-content");
+var inputWords = document.getElementById("input-words");
 var btnGenerate = document.getElementById("btn-generate");
 var btnCopy = document.getElementById("btn-copy");
 
@@ -823,7 +824,13 @@ btnStart.addEventListener("click", () => {
 /* Process */
 
 btnGenerate.addEventListener("click", () => {
-  generatedContent.innerHTML = generateParagraph();
+  generatedContent.innerHTML = generateParagraph(parseInt(inputWords.value));
+});
+
+document.addEventListener("keyup", function (event) {
+  if (event.keyCode === 13) {
+    generatedContent.innerHTML = generateParagraph(parseInt(inputWords.value));
+  }
 });
 
 btnCopy.addEventListener("click", () => {
@@ -3358,7 +3365,7 @@ function generateParagraph(size = "random") {
   if (Number.isInteger(size)) {
     var wordCount = size - 2;
   } else {
-    var wordCount = getRandomIntBetween(5, 40);
+    var wordCount = getRandomIntBetween(5, 50);
   }
 
   // Process

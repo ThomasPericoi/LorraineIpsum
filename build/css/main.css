@@ -205,7 +205,7 @@ body {
 .btn {
   padding: 1.15rem 2rem;
   position: relative;
-  font-size: 13px;
+  font-size: 0.6em;
   font-weight: 600;
   color: #111;
   letter-spacing: 0.15em;
@@ -227,6 +227,30 @@ body {
     transition: transform 0.4s; }
   .btn:hover:before {
     transform: translateY(-100%); }
+
+.input {
+  position: relative;
+  font-weight: 600;
+  font-size: 0.6em;
+  color: #111;
+  letter-spacing: 0.15em;
+  text-transform: uppercase; }
+  .input input {
+    width: 47px;
+    padding: 1.05rem 4rem 1.25rem 1rem;
+    font-family: "Playfair Display", serif;
+    background-color: transparent;
+    border: 1px dashed #111;
+    outline: 0; }
+    .input input::-webkit-outer-spin-button, .input input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0; }
+    .input input[type="number"] {
+      -moz-appearance: textfield; }
+  .input label {
+    position: absolute;
+    top: 1.15rem;
+    right: 0.5rem; }
 
 #intro {
   position: absolute;
@@ -294,5 +318,11 @@ body {
     justify-content: center;
     background: #ffd701;
     box-sizing: border-box; }
-    #content .options .btn {
+    #content .options .btn,
+    #content .options .input {
       margin: 7.5px; }
+    #content .options #btn-copy {
+      display: none; }
+      @media screen and (min-width: 575px) {
+        #content .options #btn-copy {
+          display: block; } }

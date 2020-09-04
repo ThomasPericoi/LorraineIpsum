@@ -6,7 +6,7 @@ function generateParagraph(size = "random") {
   if (Number.isInteger(size)) {
     var wordCount = size - 2;
   } else {
-    var wordCount = getRandomIntBetween(5, 40);
+    var wordCount = getRandomIntBetween(5, 50);
   }
 
   // Process

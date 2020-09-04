@@ -53,8 +53,16 @@ body {
 
     box-sizing: border-box;
 
-    .btn {
+    .btn,
+    .input {
       margin: 7.5px;
+    }
+
+    #btn-copy {
+      display: none;
+      @media screen and (min-width: $xs-max) {
+        display: block;
+      }
     }
   }
 }

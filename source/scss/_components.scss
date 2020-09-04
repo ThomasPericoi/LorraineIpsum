@@ -4,7 +4,7 @@
   padding: 1.15rem 2rem;
   position: relative;
 
-  font-size: 13px;
+  font-size: 0.6em;
   font-weight: 600;
   color: #111;
   letter-spacing: 0.15em;
@@ -37,5 +37,41 @@
     &:before {
       transform: translateY(-100%);
     }
+  }
+}
+
+.input {
+  position: relative;
+
+  font-weight: 600;
+  font-size: 0.6em;
+  color: #111;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+
+  input {
+    width: 47px;
+    padding: 1.05rem 4rem 1.25rem 1rem;
+
+    font-family: $primary-font;
+
+    background-color: transparent;
+    border: 1px dashed #111;
+    outline: 0;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    &[type="number"] {
+      -moz-appearance: textfield;
+    }
+  }
+
+  label {
+    position: absolute;
+    top: 1.15rem;
+    right: 0.5rem;
   }
 }
