@@ -807,7 +807,7 @@ var intro = document.getElementById("intro");
 var btnStart = document.getElementById("btn-start");
 
 var generatedContent = document.getElementById("generated-content");
-var inputWords = document.getElementById("input-words");
+var inputParagraphes = document.getElementById("input-paragraphes");
 var btnGenerate = document.getElementById("btn-generate");
 var btnCopy = document.getElementById("btn-copy");
 
@@ -823,18 +823,29 @@ btnStart.addEventListener("click", () => {
 
 /* Process */
 
+function changeContent() {
+  document.body.classList.add("transition");
+
+  setTimeout(() => {
+    generatedContent.innerHTML = generateParagraphes(
+      parseInt(inputParagraphes.value)
+    );
+    document.body.classList.remove("transition");
+  }, 600);
+}
+
 btnGenerate.addEventListener("click", () => {
-  generatedContent.innerHTML = generateParagraph(parseInt(inputWords.value));
+  changeContent();
 });
 
 document.addEventListener("keyup", function (event) {
   if (event.keyCode === 13) {
-    generatedContent.innerHTML = generateParagraph(parseInt(inputWords.value));
+    changeContent();
   }
 });
 
 btnCopy.addEventListener("click", () => {
-  copyToClipboard(content.textContent);
+  copyToClipboardRichText(generatedContent.innerHTML);
 });
 
 /* Init */
@@ -997,6 +1008,21 @@ function copyToClipboard(value) {
   console.log('%c"' + value + '" a été copié avec succès !', "color: green");
   // Cleaning
   document.body.removeChild(temporaryInput);
+}
+
+function copyToClipboardRichText(value) {
+  // Process
+  function listener(e) {
+    e.clipboardData.setData("text/html", value);
+    e.clipboardData.setData("text/plain", value);
+    e.preventDefault();
+  }
+  document.addEventListener("copy", listener);
+  // Output
+  document.execCommand("copy");
+  console.log('%c"' + value + '" a été copié avec succès !', "color: green");
+  // Cleaning
+  document.removeEventListener("copy", listener);
 }
 
 /* Functions about Google and searching */
@@ -3359,13 +3385,20 @@ var villesLorraine = [
 
 /*____________________________________ LORRAINE IPSUM FUNCTIONS ____________________________________*/
 
-function generateParagraph(size = "random") {
+function generateParagraph(size = "random", intro = true) {
   // Var(s)
-  var paragraph = "Lorraine Ipsum ";
+  var paragraph = "";
+
   if (Number.isInteger(size)) {
-    var wordCount = size - 2;
+    if (intro) {
+      paragraph = "Lorraine Ipsum ";
+      var wordCount = size - 2;
+    } else {
+      var wordCount = size;
+    }
   } else {
-    var wordCount = getRandomIntBetween(5, 50);
+    intro && (paragraph = "Lorraine Ipsum ");
+    var wordCount = getRandomIntBetween(10, 50);
   }
 
   // Process
@@ -3384,5 +3417,22 @@ function generateParagraph(size = "random") {
   }
 
   // Output
-  return paragraph;
+  return `<p>${paragraph}</p>`;
+}
+
+function generateParagraphes(count = "random") {
+  // Var(s)
+  var paragraphes = "";
+  Number.isInteger(count)
+    ? (paragraphCount = count)
+    : (paragraphCount = getRandomIntBetween(1, 5));
+
+  // Process
+  for (let i = 0; i < paragraphCount; i++) {
+    i === 0
+      ? (paragraphes += generateParagraph())
+      : (paragraphes += generateParagraph("random", false));
+  }
+
+  return paragraphes;
 }

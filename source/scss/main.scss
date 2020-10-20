@@ -31,11 +31,20 @@ body {
   }
 
   #generated-content {
-    padding: 15px;
-    margin-bottom: 90px;
+    max-width: 860px;
+    padding: 30px;
+    margin: 0 auto 90px auto;
+
+    opacity: 1;
+
+    transition: opacity ease 600ms;
+
+    .transition & {
+      opacity: 0;
+    }
 
     @media screen and (min-width: $xs-max) {
-      padding: 30px;
+      padding: 60px;
     }
   }
 

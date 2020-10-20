@@ -236,7 +236,7 @@ body {
   letter-spacing: 0.15em;
   text-transform: uppercase; }
   .input input {
-    width: 47px;
+    width: 96px;
     padding: 1.05rem 4rem 1.25rem 1rem;
     font-family: "Playfair Display", serif;
     background-color: transparent;
@@ -303,11 +303,16 @@ body {
   .started #content {
     opacity: 1; }
   #content #generated-content {
-    padding: 15px;
-    margin-bottom: 90px; }
+    max-width: 860px;
+    padding: 30px;
+    margin: 0 auto 90px auto;
+    opacity: 1;
+    transition: opacity ease 600ms; }
+    .transition #content #generated-content {
+      opacity: 0; }
     @media screen and (min-width: 575px) {
       #content #generated-content {
-        padding: 30px; } }
+        padding: 60px; } }
   #content .options {
     width: 100%;
     height: 90px;

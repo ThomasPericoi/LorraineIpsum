@@ -1,12 +1,19 @@
 /*____________________________________ LORRAINE IPSUM FUNCTIONS ____________________________________*/
 
-function generateParagraph(size = "random") {
+function generateParagraph(size = "random", intro = true) {
   // Var(s)
-  var paragraph = "Lorraine Ipsum ";
+  var paragraph = "";
+
   if (Number.isInteger(size)) {
-    var wordCount = size - 2;
+    if (intro) {
+      paragraph = "Lorraine Ipsum ";
+      var wordCount = size - 2;
+    } else {
+      var wordCount = size;
+    }
   } else {
-    var wordCount = getRandomIntBetween(5, 50);
+    intro && (paragraph = "Lorraine Ipsum ");
+    var wordCount = getRandomIntBetween(10, 50);
   }
 
   // Process
@@ -25,5 +32,22 @@ function generateParagraph(size = "random") {
   }
 
   // Output
-  return paragraph;
+  return `<p>${paragraph}</p>`;
+}
+
+function generateParagraphes(count = "random") {
+  // Var(s)
+  var paragraphes = "";
+  Number.isInteger(count)
+    ? (paragraphCount = count)
+    : (paragraphCount = getRandomIntBetween(1, 5));
+
+  // Process
+  for (let i = 0; i < paragraphCount; i++) {
+    i === 0
+      ? (paragraphes += generateParagraph())
+      : (paragraphes += generateParagraph("random", false));
+  }
+
+  return paragraphes;
 }
