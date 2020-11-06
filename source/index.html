@@ -70,11 +70,11 @@
       <div class="credits">
         Mamaillé par
         <a
-          href="https://github.com/ThomasPericoi/PhilippeMarmotte"
+          href="https://thomaspericoi.com/"
           target="_blank"
-          id="btn-github"
-          title="Le repository associé au projet"
-          alt="GitHub"
+          id="btn-credits"
+          title="Le site de Thomas Pericoi"
+          alt="Allez sur thomaspericoi.com"
           >Thomas Pericoi</a
         >
       </div>
@@ -90,10 +90,11 @@
             id="input-paragraphes"
             type="number"
             min="3"
-            max="99999"
+            max="99"
+            onkeypress="if(this.value.length==2) return false;"
             placeholder="x"
           />
-          <label for="input-paragraphes">paragraphes</label>
+          <label for="input-paragraphes">¶</label>
         </div>
         <button id="btn-generate" class="btn" value="Small">Générer</button>
         <button id="btn-copy" class="btn" value="Copy">Copier</button>

@@ -4,7 +4,7 @@
   padding: 1.15rem 2rem;
   position: relative;
 
-  font-size: 0.6em;
+  font-size: 0.7em;
   font-weight: 600;
   color: #111;
   letter-spacing: 0.15em;
@@ -12,7 +12,7 @@
   text-decoration: none;
 
   background-color: transparent;
-  border: 1px solid #111;
+  border: 2px solid #111;
 
   overflow: hidden;
 
@@ -44,19 +44,25 @@
   position: relative;
 
   font-weight: 600;
-  font-size: 0.6em;
+  font-size: 0.8em;
   color: #111;
   letter-spacing: 0.15em;
   text-transform: uppercase;
 
+  @media screen and (min-width: $xs-max) {
+    font-size: 0.65em;
+  }
+
   input {
-    width: 96px;
-    padding: 1.05rem 4rem 1.25rem 1rem;
+    width: 27px;
+    height: 27px;
+    padding: 0.9rem 1rem 1.1rem 1rem;
 
     font-family: $primary-font;
 
-    background-color: transparent;
-    border: 1px dashed #111;
+    background-color: #ffe44a;
+    border: 2px dashed #111;
+    border-radius: 45px;
     outline: 0;
 
     &::-webkit-outer-spin-button,
@@ -71,7 +77,9 @@
 
   label {
     position: absolute;
-    top: 1.15rem;
-    right: 0.5rem;
+    top: 1.45rem;
+    right: 0.75rem;
+
+    font-family: sans-serif;
   }
 }
