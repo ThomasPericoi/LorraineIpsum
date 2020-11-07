@@ -254,8 +254,8 @@ body {
       -moz-appearance: textfield; }
   .input label {
     position: absolute;
-    top: 1.45rem;
-    right: 0.75rem;
+    top: 1.35rem;
+    right: 0.9rem;
     font-family: sans-serif; }
 
 #intro {
