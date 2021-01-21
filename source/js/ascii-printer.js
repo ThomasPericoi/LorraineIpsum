@@ -1,15 +1,3 @@
-/*____________________________________ USEFOOL FUNCTIONS ____________________________________*/
-
-function getRandomIdFromArray(arrayName) {
-  // Output
-  return Math.floor(Math.random() * arrayName.length);
-}
-
-function getRandomValueFromArray(arrayName) {
-  // Output
-  return arrayName[getRandomIdFromArray(arrayName)];
-}
-
 /*____________________________________ ASCIIS FUNCTIONS ____________________________________*/
 
 function printAsciiById(asciiId) {

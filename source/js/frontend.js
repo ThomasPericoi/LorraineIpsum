@@ -51,4 +51,5 @@ btnCopy.addEventListener("click", () => {
 
 document.addEventListener("DOMContentLoaded", function () {
   printAsciiRandom();
+  changeTitleOnBlur("A la royotte !");
 });

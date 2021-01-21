@@ -1,15 +1,3 @@
-/*____________________________________ USEFOOL FUNCTIONS ____________________________________*/
-
-function getRandomIdFromArray(arrayName) {
-  // Output
-  return Math.floor(Math.random() * arrayName.length);
-}
-
-function getRandomValueFromArray(arrayName) {
-  // Output
-  return arrayName[getRandomIdFromArray(arrayName)];
-}
-
 /*____________________________________ ASCIIS FUNCTIONS ____________________________________*/
 
 function printAsciiById(asciiId) {
@@ -852,6 +840,7 @@ btnCopy.addEventListener("click", () => {
 
 document.addEventListener("DOMContentLoaded", function () {
   printAsciiRandom();
+  changeTitleOnBlur("A la royotte !");
 });
 
 /*____________________________________ USEFOOL FUNCTIONS ____________________________________*/
@@ -1037,6 +1026,20 @@ function searchOnGoogleImage(query) {
 
 function openUrl(query) {
   window.open(query, "newTab");
+}
+
+/* Functions about page title */
+
+function changeTitleOnBlur(string) {
+  var originalTitle = document.title;
+
+  window.onfocus = function () {
+    document.title = originalTitle;
+  };
+
+  window.onblur = function () {
+    document.title = string;
+  };
 }
 
 /*____________________________________ LORRAINE IPSUM LIBRARY ____________________________________*/
