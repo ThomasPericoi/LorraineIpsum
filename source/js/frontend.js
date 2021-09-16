@@ -51,5 +51,7 @@ btnCopy.addEventListener("click", () => {
 
 document.addEventListener("DOMContentLoaded", function () {
   printAsciiRandom();
-  changeTitleOnBlur("A la royotte !");
+  if (!isMobile()) {
+    changeTitleOnBlur("A la royotte !");
+  }
 });
