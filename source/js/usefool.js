@@ -169,6 +169,21 @@ function copyToClipboardRichText(value) {
   document.removeEventListener("copy", listener);
 }
 
+function copyToClipboardRichText(value) {
+  // Process
+  function listener(e) {
+    e.clipboardData.setData("text/html", value);
+    e.clipboardData.setData("text/plain", value);
+    e.preventDefault();
+  }
+  document.addEventListener("copy", listener);
+  // Output
+  document.execCommand("copy");
+  console.log('%c"' + value + '" a été copié avec succès !', "color: green");
+  // Cleaning
+  document.removeEventListener("copy", listener);
+}
+
 /* Functions about Google and searching */
 
 function searchOnGoogle(query) {

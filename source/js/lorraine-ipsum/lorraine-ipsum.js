@@ -6,13 +6,13 @@ function generateParagraph(size = "random", intro = true) {
 
   if (Number.isInteger(size)) {
     if (intro) {
-      paragraph = "Lorraine Ipsum ";
+      paragraph = "<b>Lorraine Ipsum</b> ";
       var wordCount = size - 2;
     } else {
       var wordCount = size;
     }
   } else {
-    intro && (paragraph = "Lorraine Ipsum ");
+    intro && (paragraph = "<b>Lorraine Ipsum</b> ");
     var wordCount = getRandomIntBetween(10, 50);
   }
 

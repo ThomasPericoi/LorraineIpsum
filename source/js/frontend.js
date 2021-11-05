@@ -44,7 +44,7 @@ document.addEventListener("keyup", function (event) {
 });
 
 btnCopy.addEventListener("click", () => {
-  copyToClipboardRichText(generatedContent.innerHTML);
+  copyToClipboardRichText(generatedContent.innerText);
 });
 
 /* Init */

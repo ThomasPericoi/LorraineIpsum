@@ -896,7 +896,7 @@ document.addEventListener("keyup", function (event) {
 });
 
 btnCopy.addEventListener("click", () => {
-  copyToClipboardRichText(generatedContent.innerHTML);
+  copyToClipboardRichText(generatedContent.innerText);
 });
 
 /* Init */
@@ -1062,6 +1062,21 @@ function copyToClipboard(value) {
   console.log('%c"' + value + '" a été copié avec succès !', "color: green");
   // Cleaning
   document.body.removeChild(temporaryInput);
+}
+
+function copyToClipboardRichText(value) {
+  // Process
+  function listener(e) {
+    e.clipboardData.setData("text/html", value);
+    e.clipboardData.setData("text/plain", value);
+    e.preventDefault();
+  }
+  document.addEventListener("copy", listener);
+  // Output
+  document.execCommand("copy");
+  console.log('%c"' + value + '" a été copié avec succès !', "color: green");
+  // Cleaning
+  document.removeEventListener("copy", listener);
 }
 
 function copyToClipboardRichText(value) {
@@ -3466,13 +3481,13 @@ function generateParagraph(size = "random", intro = true) {
 
   if (Number.isInteger(size)) {
     if (intro) {
-      paragraph = "Lorraine Ipsum ";
+      paragraph = "<b>Lorraine Ipsum</b> ";
       var wordCount = size - 2;
     } else {
       var wordCount = size;
     }
   } else {
-    intro && (paragraph = "Lorraine Ipsum ");
+    intro && (paragraph = "<b>Lorraine Ipsum</b> ");
     var wordCount = getRandomIntBetween(10, 50);
   }
 
