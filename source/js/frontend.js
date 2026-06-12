@@ -33,6 +33,36 @@ function changeContent() {
   }, 600);
 }
 
+function copyGeneratedContent() {
+  var textToCopy = generatedContent.innerText;
+
+  if (typeof copyToClipboard === "function") {
+    copyToClipboard(textToCopy).then(function (copied) {
+      if (!copied) {
+        copyGeneratedContentFallback(textToCopy);
+      }
+    }).catch(function () {
+      copyGeneratedContentFallback(textToCopy);
+    });
+    return;
+  }
+
+  copyGeneratedContentFallback(textToCopy);
+}
+
+function copyGeneratedContentFallback(textToCopy) {
+  var temporaryTextarea = document.createElement("textarea");
+
+  temporaryTextarea.value = textToCopy;
+  temporaryTextarea.setAttribute("readonly", "");
+  temporaryTextarea.style.position = "fixed";
+  temporaryTextarea.style.top = "-9999px";
+  document.body.appendChild(temporaryTextarea);
+  temporaryTextarea.select();
+  document.execCommand("copy");
+  document.body.removeChild(temporaryTextarea);
+}
+
 btnGenerate.addEventListener("click", () => {
   changeContent();
 });
@@ -44,7 +74,7 @@ document.addEventListener("keyup", function (event) {
 });
 
 btnCopy.addEventListener("click", () => {
-  copyToClipboardRichText(generatedContent.innerText);
+  copyGeneratedContent();
 });
 
 /* Init */

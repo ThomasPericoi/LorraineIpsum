@@ -1,4 +1,111 @@
-function getRandomIdFromArray(a){return Math.floor(Math.random()*a.length)}function getRandomValueFromArray(a){return a[getRandomIdFromArray(a)]}function printAsciiById(a){console.log(`%c${asciis[a].art}`,`color: ${asciis[a].color}; font-family: monospace;`)}function printAsciiByName(a){printAsciiById(selectedAscii=asciis.findIndex(r=>r.name===a))}function printRandomAscii(a="all"){var r=asciis.filter(r=>r.type===a);r.length<1&&(r=Object.values(asciis)),printAsciiByName((randomAscii=getRandomValueFromArray(r)).name)}var asciis=[{type:"animal",name:"anteater",art:String.raw` 
+/*____________________________________ USEFOOL FUNCTIONS (really light) ____________________________________*/
+
+function getRandomIdFromArray(arrayName) {
+  // Output
+  return Math.floor(Math.random() * arrayName.length);
+}
+
+function getRandomValueFromArray(arrayName) {
+  // Output
+  return arrayName[getRandomIdFromArray(arrayName)];
+}
+
+/*____________________________________ ASCIIS FUNCTIONS ____________________________________*/
+
+function getAsciiStyle(ascii, options = {}) {
+  const color = options.color || ascii.color;
+  return `color: ${color}; font-family: monospace;`;
+}
+
+function printAsciiCredit(ascii, options = {}) {
+  if (options.credits && ascii.author) {
+    console.log(`ASCII by ${ascii.author}`);
+  }
+}
+
+function listAsciiTypes() {
+  return [...new Set(asciis.map((ascii) => ascii.type))];
+}
+
+function listAsciiNames(criteria = "all") {
+  const selectedAsciis =
+    criteria === "all"
+      ? asciis
+      : asciis.filter((ascii) => ascii.type === criteria);
+
+  return selectedAsciis.map((ascii) => ascii.name);
+}
+
+function listAsciis(criteria = "all") {
+  return asciis
+    .map((ascii, id) => ({
+      id,
+      name: ascii.name,
+      category: ascii.type,
+    }))
+    .filter((ascii) => criteria === "all" || ascii.category === criteria);
+}
+
+function printAsciiById(asciiId, options = {}) {
+  const ascii = asciis[asciiId];
+
+  if (!ascii) {
+    console.warn(`ASCII not found for id: ${asciiId}`);
+    return null;
+  }
+
+  // Output
+  console.log(
+    `%c${ascii.art}`,
+    getAsciiStyle(ascii, options)
+  );
+  printAsciiCredit(ascii, options);
+}
+
+function printAsciiByName(asciiName, options = {}) {
+  // Process
+  const selectedAscii = asciis.findIndex((ascii) => ascii.name === asciiName); // Select ascii according the name
+
+  if (selectedAscii === -1) {
+    console.warn(`ASCII not found for name: ${asciiName}`);
+    return null;
+  }
+
+  // Output
+  printAsciiById(selectedAscii, options);
+}
+
+function printAsciiSearch(query, options = {}) {
+  const normalizedQuery = query.toLowerCase();
+  const selectedAscii = asciis.find((ascii) =>
+    ascii.name.toLowerCase().includes(normalizedQuery)
+  );
+
+  if (!selectedAscii) {
+    console.warn(`ASCII not found for search: ${query}`);
+    return null;
+  }
+
+  printAsciiByName(selectedAscii.name, options);
+}
+
+function printRandomAscii(criteria = "all", options = {}) {
+  // Process
+  var selectedAsciis = asciis.filter((ascii) => ascii.type === criteria); // Select the asciis matching the criteria
+  selectedAsciis.length < 1 && (selectedAsciis = Object.values(asciis)); // If empty or nothing is matching, select them all
+  const randomAscii = getRandomValueFromArray(selectedAsciis);
+  // Output
+  printAsciiByName(randomAscii.name, options);
+}
+
+
+/*____________________________________ ASCIIS LIBRAIRY ____________________________________*/
+
+var asciis = [
+  {
+    type: "animal",
+    name: "anteater",
+    art: String.raw` 
        _.---._    /\\
     ./'       "--'\//
   ./              o \
@@ -6,7 +113,15 @@ function getRandomIdFromArray(a){return Math.floor(Math.random()*a.length)}funct
 ./  / /\ \   | \ \  \ \
    / /  \ \  | |\ \  \7
     "     "    "  "
-    `,color:"LightSlateGray",height:7,author:"Veronica Karlsson"},{type:"animal",name:"armadillo",art:String.raw` 
+    `,
+    color: "LightSlateGray",
+    height: 7,
+    author: "Veronica Karlsson",
+  },
+  {
+    type: "animal",
+    name: "armadillo",
+    art: String.raw` 
              _.-----__    
           ,:::://///,:::-. 
          /:''/////// \\:::;/|/
@@ -14,7 +129,15 @@ function getRandomIdFromArray(a){return Math.floor(Math.random()*a.length)}funct
       .' ,   ||||||     ./(  e \
 -===~__-'\__X_'''''\_____/~'-.__'0
            ~~        ~~       
-    `,color:"RosyBrown",height:7,author:"Seal do Mar"},{type:"animal",name:"bat",art:String.raw` 
+    `,
+    color: "RosyBrown",
+    height: 7,
+    author: "Seal do Mar",
+  },
+  {
+    type: "animal",
+    name: "bat",
+    art: String.raw` 
   /\                 /\
  / \'._   (\_/)   _.'/ \
 /_.''._'--('.')--'_.''._\
@@ -22,7 +145,15 @@ function getRandomIdFromArray(a){return Math.floor(Math.random()*a.length)}funct
  \/ '\__|'\___/'|__/'  \/
          \(/|\)/
           " ' "
-    `,color:"DimGray",height:7,author:"Joan G. Stark"},{type:"animal",name:"bear",art:String.raw` 
+    `,
+    color: "DimGray",
+    height: 7,
+    author: "Joan G. Stark",
+  },
+  {
+    type: "animal",
+    name: "bear",
+    art: String.raw` 
  .--.              .--.
 : (\ ". _......_ ." /) :
  '.    '        '    .'
@@ -33,7 +164,33 @@ function getRandomIdFromArray(a){return Math.floor(Math.random()*a.length)}funct
  \   | .  .==.  . |   /
   '._ \.' \__/ './ _.'
   /  '''._-''-_.'''  \
-    `,color:"Brown",height:10,author:"Joan G. Stark"},{type:"animal",name:"beaver",art:String.raw` 
+    `,
+    color: "Brown",
+    height: 10,
+    author: "Joan G. Stark",
+  },
+  {
+    type: "animal",
+    name: "bees",
+    art: String.raw` 
+  ^^      .-=-=-=-.  ^^      ^^
+       ('-=-=-=-=-=-')  ^^         ^^
+^^   ('-=-=-=-=-=-=-=-')
+    ( '-=-=-=-(@)-=-=-' )      ^^
+    ('-=-=-=-=-=-=-=-=-')  ^^ 
+    ('-=-=-=-=-=-=-=-=-')  ^^
+     ('-=-=-=-=-=-=-=-')          ^^
+       ('-=-=-=-=-=-')  ^^
+         '-=-=-=-=-'
+    `,
+    color: "Goldenrod",
+    height: 9,
+    author: "Joan G. Stark",
+  },
+  {
+    type: "animal",
+    name: "beaver",
+    art: String.raw` 
             ___
          .="   "=._.---.
        ."         c ' Y' p
@@ -41,7 +198,15 @@ function getRandomIdFromArray(a){return Math.floor(Math.random()*a.length)}funct
       |   '-.   /     /
 _,..._|      )_-\ \_=.\
 '-....-''------)))'=-'"''"
-    `,color:"DarkGoldenrod",height:7,author:"Joan G. Stark"},{type:"animal",name:"cat",art:String.raw` 
+    `,
+    color: "DarkGoldenrod",
+    height: 7,
+    author: "Joan G. Stark",
+  },
+  {
+    type: "animal",
+    name: "cat",
+    art: String.raw` 
  )\   _,
  | "^" (
  (e  a )
@@ -54,11 +219,27 @@ _,..._|      )_-\ \_=.\
   || ;  /   //
   )| ( (__,</
 c{{i.}}=oo-^
-    `,color:"DarkSlateGrey",height:12,author:""},{type:"animal",name:"caterpillar",art:String.raw` 
+    `,
+    color: "DarkSlateGrey",
+    height: 12,
+    author: "",
+  },
+  {
+    type: "animal",
+    name: "caterpillar",
+    art: String.raw` 
 \_/-.--.--.--.--.--.
 (")__)__)__)__)__)__)
  ^ "" "" "" "" "" ""
-    `,color:"Green",height:3,author:"Joan G. Stark"},{type:"animal",name:"crab",art:String.raw` 
+    `,
+    color: "Green",
+    height: 3,
+    author: "Joan G. Stark",
+  },
+  {
+    type: "animal",
+    name: "crab",
+    art: String.raw` 
    __       __    
   / <'     '> \
  (  / @   @ \  )
@@ -67,7 +248,33 @@ c{{i.}}=oo-^
  "===\     /==="
   .==')___('==.
  ' .='     '=. '
-    `,color:"Red",height:8,author:""},{type:"animal",name:"deer",art:String.raw` 
+    `,
+    color: "Red",
+    height: 8,
+    author: "",
+  },
+  {
+    type: "animal",
+    name: "crocodile",
+    art: String.raw` 
+            .-._   _ _ _ _ _ _ _ _
+ .-''-.__.-'00  '-' ' ' ' ' ' ' ' '-.
+'.___ '    .   .--_'-' '-' '-' _'-' '._
+ V: V 'vv-'   '_   '.       .'  _..' '.'.
+   '=.____.=_.--'   :_.__.__:_   '.   : :
+           (((____.-'        '-.  /   : :
+                             (((-'\ .' /
+                           _____..'  .'
+                          '-._____.-'
+    `,
+    color: "OliveDrab",
+    height: 9,
+    author: "Shanaka Dias",
+  },
+  {
+    type: "animal",
+    name: "deer",
+    art: String.raw` 
     (      )
     ))    ((
    //      \\
@@ -83,7 +290,15 @@ c{{i.}}=oo-^
   '\          /'
     '\_    _/'
        ~~~~
-    `,color:"Tan",height:15,author:""},{type:"animal",name:"dog",art:String.raw` 
+    `,
+    color: "Tan",
+    height: 15,
+    author: "",
+  },
+  {
+    type: "animal",
+    name: "dog",
+    art: String.raw` 
             /)-_-(\
              (o o)
      .-----__/\o/
@@ -92,7 +307,15 @@ c{{i.}}=oo-^
      \\     ||
      //     ||
      |\     |\
-    `,color:"Tan",height:8,author:""},{type:"animal",name:"duck",art:String.raw` 
+    `,
+    color: "Tan",
+    height: 8,
+    author: "",
+  },
+  {
+    type: "animal",
+    name: "duck",
+    art: String.raw` 
       ,~~.
      (  9 )-_,
 (\___ )=='-'
@@ -100,7 +323,15 @@ c{{i.}}=oo-^
   \ '-' /
    '~j-'  
      "=:
-    `,color:"DarkGray",height:7,author:""},{type:"animal",name:"elephant",art:String.raw` 
+    `,
+    color: "DarkGray",
+    height: 7,
+    author: "",
+  },
+  {
+    type: "animal",
+    name: "elephant",
+    art: String.raw` 
    ___      ___
   /   \____/   \
  /    / __ \    \
@@ -112,7 +343,15 @@ c{{i.}}=oo-^
    | @ |  | @ || @ |/  m
    |   |~~|   ||   |
    'ooo'  'ooo''ooo'
-    `,color:"Silver",height:11,author:"Hamilton Furtado"},{type:"animal",name:"flamingo",art:String.raw` 
+    `,
+    color: "Silver",
+    height: 11,
+    author: "Hamilton Furtado",
+  },
+  {
+    type: "animal",
+    name: "flamingo",
+    art: String.raw` 
          __
         /('o
   ,-,  //  \\
@@ -126,7 +365,15 @@ c{{i.}}=oo-^
 o o
 \ |
  \|
-    `,color:"Pink",height:13,author:""},{type:"animal",name:"fox",art:String.raw` 
+    `,
+    color: "Pink",
+    height: 13,
+    author: "",
+  },
+  {
+    type: "animal",
+    name: "fox",
+    art: String.raw` 
  /\   /\
 //\\_//\\     __/\
 \_     _/    /   /
@@ -136,21 +383,45 @@ o o
   \     \_  /  /
    [ [ /  \/ _/
   _[ [ \  /_/
-    `,color:"DarkOrange",height:9,author:""},{type:"animal",name:"frog",art:String.raw` 
+    `,
+    color: "DarkOrange",
+    height: 9,
+    author: "",
+  },
+  {
+    type: "animal",
+    name: "frog",
+    art: String.raw` 
        _   _
       (o)-(o)
    .-(   "   )-.
   /  /;'-=-';\  \
 __\ _\ \___/ /_ /__
   /|  /|\ /|\  |\
-    `,color:"SpringGreen",height:6,author:""},{type:"animal",name:"goldfish",art:String.raw` 
+    `,
+    color: "SpringGreen",
+    height: 6,
+    author: "",
+  },
+  {
+    type: "animal",
+    name: "goldfish",
+    art: String.raw` 
       /'·.¸
      /¸...¸':·
  ¸.·'  ¸   '·.¸.·°)
 : © ):´;      ¸  {
  °·.¸¸'·  ¸.·´\'·¸)
       \\´´\¸.·´
-    `,color:"Gold",height:6,author:""},{type:"animal",name:"hippo",art:String.raw` 
+    `,
+    color: "Gold",
+    height: 6,
+    author: "",
+  },
+  {
+    type: "animal",
+    name: "hippo",
+    art: String.raw` 
      c~~p ,---------.
 ,---'oo  )           \
 ( O O                  )/
@@ -158,13 +429,29 @@ __\ _\ \___/ /_ /__
       \    ,     .   /
       \\  |-----'|  /
       ||__|    |_|__|
-    `,color:"DarkGray",height:7,author:""},{type:"animal",name:"hedgehog",art:String.raw` 
+    `,
+    color: "DarkGray",
+    height: 7,
+    author: "",
+  },
+  {
+    type: "animal",
+    name: "hedgehog",
+    art: String.raw` 
   .|||||||||.
  |||||||||||||
 |||||||||||' .\
 '||||||||||_,__o
     ''  '' 
-    `,color:"Tan",height:5,author:""},{type:"animal",name:"lion",art:String.raw` 
+    `,
+    color: "Tan",
+    height: 5,
+    author: "",
+  },
+  {
+    type: "animal",
+    name: "lion",
+    art: String.raw` 
             o00000000o
            o0/\0000/\0o
           o00\c "" J/00o
@@ -178,7 +465,15 @@ o.       0000/ b  d \000
    \\/         ) | |
     \         /_ | |__
     (___________)))))))
-    `,color:"Peru",height:13,author:"Joan G. Stark"},{type:"animal",name:"marbles",art:String.raw` 
+    `,
+    color: "Peru",
+    height: 13,
+    author: "Joan G. Stark",
+  },
+  {
+    type: "animal",
+    name: "marbles",
+    art: String.raw` 
          __
         /  \
        / ..|\
@@ -189,7 +484,15 @@ _   /  '   |
 \\/  \  | _\
  \   /_ || \\_
   \____)|_) \_)
-    `,color:"Brown",height:10,author:""},{type:"animal",name:"marmot",art:String.raw` 
+    `,
+    color: "Brown",
+    height: 10,
+    author: "",
+  },
+  {
+    type: "animal",
+    name: "marmot",
+    art: String.raw` 
        (>\---/<)
        ,'     '.
       /  q   p  \
@@ -202,7 +505,15 @@ c /    \         |  |
   \      )       ;_/
    '._ _/_  ___.'-\\\
       '--\\\
-    `,color:"DarkGoldenrod",height:12,author:"Hayley Jane Wakenshaw"},{type:"animal",name:"monkey",art:String.raw`
+    `,
+    color: "DarkGoldenrod",
+    height: 12,
+    author: "Hayley Jane Wakenshaw",
+  },
+  {
+    type: "animal",
+    name: "monkey",
+    art: String.raw`
       .="=.
     _/.-.-.\_     _
    ( ( o o ) )    ))
@@ -215,13 +526,29 @@ c /    \         |  |
     /   /    \  /
 ,--',--'\/\    /
  '-- "--'  '--'
-    `,color:"Brown",height:12,author:"Joan G. Stark"},{type:"animal",name:"mouse",art:String.raw` 
+    `,
+    color: "Brown",
+    height: 12,
+    author: "Joan G. Stark",
+  },
+  {
+    type: "animal",
+    name: "mouse",
+    art: String.raw` 
 (q\_/p)
  /. .\.-""""-.      __
 =\_t_/=    /  '\   (
   )\ ))__ _\    |___)
  nn-nn'  'nn---'
-    `,color:"Grey",height:5,author:""},{type:"animal",name:"parrot",art:String.raw` 
+    `,
+    color: "Gray",
+    height: 5,
+    author: "",
+  },
+  {
+    type: "animal",
+    name: "parrot",
+    art: String.raw` 
                           .
                           | \/|
   (\   _                  ) )|/|
@@ -238,7 +565,15 @@ c /    \         |  |
                   \   '.
                    \ \ '.)
                     '-'-'
-    `,color:"DodgerBlue",height:16,author:""},{type:"animal",name:"pig",art:String.raw` 
+    `,
+    color: "DodgerBlue",
+    height: 16,
+    author: "",
+  },
+  {
+    type: "animal",
+    name: "pig",
+    art: String.raw` 
        9
   ,--.-'-,--.
   \  /-~-\  /
@@ -248,20 +583,44 @@ c /    \         |  |
   \   '-'   /
    | |---| |
    [_]   [_]
-    `,color:"Pink",height:9,author:""},{type:"animal",name:"pinguin",art:String.raw` 
+    `,
+    color: "Pink",
+    height: 9,
+    author: "",
+  },
+  {
+    type: "animal",
+    name: "pinguin",
+    art: String.raw` 
    __
 -=(o '.
    '.-.\
    /|  \\
    '|  ||
     _\_):,_
-    `,color:"Black",height:6,author:""},{type:"animal",name:"snail",art:String.raw` 
+    `,
+    color: "Black",
+    height: 6,
+    author: "",
+  },
+  {
+    type: "animal",
+    name: "snail",
+    art: String.raw` 
     .----.   @   @
    / .-"-.'.  \v/
    | | '\ \ \_/ )
  ,-\ '-.' /.'  /
 '---'----'----'
-    `,color:"SeaGreen",height:5,author:"Hayley Jane Wakenshaw"},{type:"animal",name:"teckel",art:String.raw` 
+    `,
+    color: "SeaGreen",
+    height: 5,
+    author: "Hayley Jane Wakenshaw",
+  },
+  {
+    type: "animal",
+    name: "teckel",
+    art: String.raw` 
                         __
  ,                    ," e'--o
 ((                   (  | __,'
@@ -270,27 +629,59 @@ c /    \         |  |
  /) ._______________. )
 (( (              (( (
 '' '               ''-'
-    `,color:"Chocolate",height:8,author:"Hayley Jane Wakenshaw"},{type:"animal",name:"turtle",art:String.raw` 
+    `,
+    color: "Chocolate",
+    height: 8,
+    author: "Hayley Jane Wakenshaw",
+  },
+  {
+    type: "animal",
+    name: "turtle",
+    art: String.raw` 
                 __
      .,-;-;-,. /'_\
    _/_/_/_|_\_\) /
 '-<_><_><_><_>=/\
   '/_/    /_/  \_\
    ""     ""    ""
-    `,color:"LimeGreen",height:6,author:""},{type:"animal",name:"wasp",art:String.raw` 
+    `,
+    color: "LimeGreen",
+    height: 6,
+    author: "",
+  },
+  {
+    type: "animal",
+    name: "wasp",
+    art: String.raw` 
     _  _
    | )/ )
 \\ |//,' __
 (")(_)-"()))=-
    (\\
-    `,color:"Yellow",height:5,author:"Stef00"},{type:"animal",name:"whale",art:String.raw` 
+    `,
+    color: "Yellow",
+    height: 5,
+    author: "Stef00",
+  },
+  {
+    type: "animal",
+    name: "whale",
+    art: String.raw` 
        .
       ":"
     ___:____     |"\/"|
   ,'        '.    \  /
   |  O        \___/  |
 ~^~^~^~^~^~^~^~^~^~^~^~^~
-    `,color:"RoyalBlue",height:6,author:"Riitta Rasimus"},{type:"character",name:"bender",art:String.raw` 
+    `,
+    color: "RoyalBlue",
+    height: 6,
+    author: "Riitta Rasimus",
+  },
+  {
+    type: "character",
+    name: "bender",
+    art: String.raw` 
      ( )
       H
      _H_
@@ -307,7 +698,15 @@ c /    \         |  |
 |    """""" |
 '-.__   __.-'
      """
-    `,color:"Silver",height:16,author:"Silver Saks"},{type:"character",name:"bigBird",art:String.raw` 
+    `,
+    color: "Silver",
+    height: 16,
+    author: "Silver Saks",
+  },
+  {
+    type: "character",
+    name: "bigBird",
+    art: String.raw` 
    . -- .
   (      )
  ( (/oo\) )
@@ -320,7 +719,15 @@ c /    \         |  |
    ' -- '
     =  =
     =  =
-    `,color:"Yellow",height:16,author:""},{type:"character",name:"cheshireCat",art:String.raw` 
+    `,
+    color: "Yellow",
+    height: 16,
+    author: "",
+  },
+  {
+    type: "character",
+    name: "cheshireCat",
+    art: String.raw` 
            .'\   /'.
          .'.-.'-'.-.'.
     ..._:   .-. .-.   :_...
@@ -333,21 +740,45 @@ c /    \         |  |
     '.    '-:_| | |_:-'   .'
       '-._    ''''    _.-'
           ''-------''
-    `,color:"Violet",height:6,author:"Randy Ransom"},{type:"character",name:"cookieMonster",art:String.raw` 
+    `,
+    color: "Violet",
+    height: 6,
+    author: "Randy Ransom",
+  },
+  {
+    type: "character",
+    name: "cookieMonster",
+    art: String.raw` 
     (o)(o)
   w"      "w
  W  -====-  W
   "w      w"
  w"""""""""w
 W            W
-    `,color:"Blue",height:6,author:"Randy Ransom"},{type:"character",name:"devil",art:String.raw` 
+    `,
+    color: "Blue",
+    height: 6,
+    author: "Randy Ransom",
+  },
+  {
+    type: "character",
+    name: "devil",
+    art: String.raw` 
   ,  ,  , , ,
  <(__)> | | |
  | \/ | \_|_/
  \^  ^/   |
  /\--/\  /|
 /  \/  \/ |
-    `,color:"Red",height:6,author:"Joan G. Stark"},{type:"character",name:"einstein",art:String.raw` 
+    `,
+    color: "Red",
+    height: 6,
+    author: "Joan G. Stark",
+  },
+  {
+    type: "character",
+    name: "einstein",
+    art: String.raw` 
       -''--.
       _'>   '\.-'/
   _.'     _     '._
@@ -357,7 +788,15 @@ W            W
   >._\ .-,_)-. /_.<
       /__/ \__\ 
         '---'
-    `,color:"Silver",height:9,author:"Joan G. Stark"},{type:"character",name:"flintstones",art:String.raw` 
+    `,
+    color: "Silver",
+    height: 9,
+    author: "Joan G. Stark",
+  },
+  {
+    type: "character",
+    name: "flintstones",
+    art: String.raw` 
   \/________________ 
  /     _____________)
 /     /     /   \ |
@@ -369,7 +808,15 @@ W            W
   |        \      / /
 __|_________\______/
 \______________\./__\
-    `,color:"DarkOrange",height:11,author:""},{type:"character",name:"garfield",art:String.raw` 
+    `,
+    color: "DarkOrange",
+    height: 11,
+    author: "",
+  },
+  {
+    type: "character",
+    name: "garfield",
+    art: String.raw` 
      .-.,     ,.-.
     /:::\\   //:::\
    |':':' '"' ':':'|
@@ -383,7 +830,15 @@ __|_________\______/
   '\= '--'   '--' =/'
     '-=._     _.=-'
          '"""'
-    `,color:"Orange",height:12,author:"Joan G. Stark"},{type:"character",name:"homer",art:String.raw` 
+    `,
+    color: "Orange",
+    height: 12,
+    author: "Joan G. Stark",
+  },
+  {
+    type: "character",
+    name: "homer",
+    art: String.raw` 
     ___
    //_\\_
  ."\\    ".
@@ -398,7 +853,15 @@ __|_________\______/
    | (  _/--.-'
    |  '.___.'
          (
-    `,color:"Gold",height:14,author:""},{type:"character",name:"kermit",art:String.raw` 
+    `,
+    color: "Gold",
+    height: 14,
+    author: "",
+  },
+  {
+    type: "character",
+    name: "kermit",
+    art: String.raw` 
        .---.     .---.
       ( -o- )---( -o- )
       ;-...-'   '-...-;
@@ -412,7 +875,15 @@ __|_________\______/
      /                 \
     /.-''\   .'.   /''-.\
           '.'   '.'
-    `,color:"SpringGreen",height:13,author:"Joan G. Stark"},{type:"character",name:"maryPoppins",art:String.raw` 
+    `,
+    color: "SpringGreen",
+    height: 13,
+    author: "Joan G. Stark",
+  },
+  {
+    type: "character",
+    name: "maryPoppins",
+    art: String.raw` 
          _
       .-' '-.
      /       \
@@ -430,7 +901,15 @@ __|_________\______/
 |_|___|
    \|/
   _/L\_
-    `,color:"Black",height:17,author:""},{type:"character",name:"monaLisa",art:String.raw` 
+    `,
+    color: "Black",
+    height: 17,
+    author: "",
+  },
+  {
+    type: "character",
+    name: "monaLisa",
+    art: String.raw` 
           ____  
         o8%8888,    
       o88%8888888.  
@@ -448,7 +927,15 @@ __|_________\______/
  d88%            %%%8--'-.  
 /88:.__ ,       _%-' ---  -  
     '''::===..-'   =  --.
-    `,color:"Sienna",height:17,author:""},{type:"character",name:"pinkPanther",art:String.raw` 
+    `,
+    color: "Sienna",
+    height: 17,
+    author: "",
+  },
+  {
+    type: "character",
+    name: "pinkPanther",
+    art: String.raw` 
  .--.             .--.
 ( ('\\.---------.//') )
  '-.    __   __    .-'
@@ -461,7 +948,15 @@ __|_________\______/
       ';--'''--;'
         '.___.'
           | |
-    `,color:"Pink",height:12,author:""},{type:"character",name:"r2d2",art:String.raw`
+    `,
+    color: "Pink",
+    height: 12,
+    author: "",
+  },
+  {
+    type: "character",
+    name: "r2d2",
+    art: String.raw`
     .---.
   .'_:___".
   |__ --==|
@@ -470,7 +965,15 @@ __|_________\______/
   / / ____|
  |-/.____.'
 /___\ /___\  
-    `,color:"Blue",height:8,author:"snd"},{type:"character",name:"santaClaus",art:String.raw`
+    `,
+    color: "Blue",
+    height: 8,
+    author: "snd",
+  },
+  {
+    type: "character",
+    name: "santaClaus",
+    art: String.raw`
    ,--.
   ()   \
    /    \
@@ -481,7 +984,15 @@ __|_________\______/
 (  '-''-'  )
  \        /
   \,,,,,,/
-    `,color:"Red",height:10,author:'B.D.S.`"Don"McConnell'},{type:"character",name:"sherlockHolmes",art:String.raw`
+    `,
+    color: "Red",
+    height: 10,
+    author: "B.D.S.`\"Don\"McConnell",
+  },
+  {
+    type: "character",
+    name: "sherlockHolmes",
+    art: String.raw`
    ,_       
  ,'  '\,_   
  |_,-'_)    
@@ -490,7 +1001,39 @@ __|_________\______/
   /\__-' \[]
  /'-_'\     
  '     \   
-    `,color:"MediumSeaGreen",height:8,author:"Harry Mason"},{type:"character",name:"sonic",art:String.raw`
+    `,
+    color: "MediumSeaGreen",
+    height: 8,
+    author: "Harry Mason",
+  },
+  {
+    type: "character",
+    name: "snoopy",
+    art: String.raw`
+          ,-~~-.___.
+         / ()=(()   \
+        (  |         0
+          \_,\, ,----'
+    ##XXXxxxxxxx
+            /  ---'~;
+          /    /~|-
+        =(   ~~  | 
+   /~~~~~~~~~~~~~~~~~~~~~\
+  /_______________________\
+ /_________________________\
+/___________________________\
+   |____________________|
+   |____________________|
+   |____________________|
+    `,
+    color: "Black",
+    height: 15,
+    author: "Win Kang",
+  },
+  {
+    type: "character",
+    name: "sonic",
+    art: String.raw`
           .,
 .      _,'f----.._
 |\ ,-'"/  |     ,'
@@ -500,7 +1043,15 @@ f  o|  o|__     "'-.
 ,-._.,--'_ '.   _.,-'
 '"' ___.,'' j,-'
   '-.__.,--'
-    `,color:"Blue",height:9,author:""},{type:"character",name:"spaceInvader",art:String.raw`
+    `,
+    color: "Blue",
+    height: 9,
+    author: "",
+  },
+  {
+    type: "character",
+    name: "spaceInvader",
+    art: String.raw`
          __
        _|  |_
      _|      |_
@@ -510,7 +1061,15 @@ f  o|  o|__     "'-.
 |_|_|_| |__| |_|_|_|
   |_|_        _|_|
     |_|      |_|
-    `,color:"Chartreuse",height:8,author:""},{type:"character",name:"squidward",art:String.raw` 
+    `,
+    color: "Chartreuse",
+    height: 8,
+    author: "",
+  },
+  {
+    type: "character",
+    name: "squidward",
+    art: String.raw` 
      .--'''''''''--.
    '      .---.      '.
  /    .-----------.    \
@@ -526,7 +1085,15 @@ f  o|  o|__     "'-.
   ' _...-|     |-..._ '
          |     |
          '.___.'
-    `,color:"Grey",height:15,author:"LGB"},{type:"character",name:"tweetieBird",art:String.raw` 
+    `,
+    color: "Gray",
+    height: 15,
+    author: "LGB",
+  },
+  {
+    type: "character",
+    name: "tweetieBird",
+    art: String.raw` 
     .-"-.
    /  - -\
    \  @ @/
@@ -536,7 +1103,15 @@ f  o|  o|__     "'-.
  "-\)__/
   __|||__
  ((__|__))
-    `,color:"Orange",height:9,author:""},{type:"character",name:"yosemiteSam",art:String.raw` 
+    `,
+    color: "Orange",
+    height: 9,
+    author: "",
+  },
+  {
+    type: "character",
+    name: "yosemiteSam",
+    art: String.raw` 
         ___ 
     .-''   ''-.
   .'           '.
@@ -550,7 +1125,15 @@ f  o|  o|__     "'-.
     \  |._.|  /
      \ |   | /
       \/   \/
-    `,color:"Red",height:13,author:""},{type:"item",name:"alarm",art:String.raw` 
+    `,
+    color: "Red",
+    height: 13,
+    author: "",
+  },
+  {
+    type: "thing",
+    name: "alarm",
+    art: String.raw` 
      .-.-.
 ((  (__I__)  ))
   .'_....._'.
@@ -561,13 +1144,71 @@ f  o|  o|__     "'-.
   '.'-...-'.'
    /'-- --'\
   '"""""""""'
-    `,color:"Chocolate",height:10,author:"Joan G. Stark"},{type:"item",name:"boat",art:String.raw` 
+    `,
+    color: "Chocolate",
+    height: 10,
+    author: "Joan G. Stark",
+  },
+  {
+    type: "thing",
+    name: "boat",
+    art: String.raw` 
        _    _
     __|_|__|_|__
   _|____________|__
  |o o o o o o o o /
 ~'~'~'~'~'~'~'~'~'~'~
-    `,color:"Aqua",height:5,author:"Hayley Jane Wakenshaw"},{type:"item",name:"camera",art:String.raw` 
+    `,
+    color: "Aqua",
+    height: 5,
+    author: "Hayley Jane Wakenshaw",
+  },
+  {
+    type: "thing",
+    name: "bomb",
+    art: String.raw`
+                .
+               \'/
+             -=>*<=-
+            .-"/.\
+           /    '
+          _|
+       _.|_|._
+     .'       '.
+    /           \
+   |         #   |
+   |             |
+    \           /
+     '.       .'
+       ''---''
+    `,
+    color: "DimGray",
+    height: 14,
+    author: "Joan G. Stark",
+  },
+  {
+    type: "thing",
+    name: "book",
+    art: String.raw`
+,         ,
+|\\\\ ////|
+| \\\V/// |
+|  |~~~|  |
+|  |===|  |
+|  |   |  |
+|  |   |  |
+ \ |   | /
+  \|===|/
+   '---'
+    `,
+    color: "SaddleBrown",
+    height: 10,
+    author: "Joan G. Stark",
+  },
+  {
+    type: "thing",
+    name: "camera",
+    art: String.raw` 
  .-------------------.
 /--"--.------.------/|
 |Kodak|__Ll__| [==] ||
@@ -575,7 +1216,15 @@ f  o|  o|__     "'-.
 |     |( () )|      ||
 |     | '--' |      |/
 '-----'------'------'
-    `,color:"Gray",height:10,author:"Joan G. Stark"},{type:"item",name:"crown",art:String.raw` 
+    `,
+    color: "Gray",
+    height: 10,
+    author: "Joan G. Stark",
+  },
+  {
+    type: "thing",
+    name: "crown",
+    art: String.raw` 
        o 
     o^/|\^o
  o_^|\/*\/|^_o
@@ -583,7 +1232,15 @@ o\*''.\|/.''*/o
  \\\\\\|//////
   {><><@><><}
   '"""""""""'
-    `,color:"Gold",height:10,author:"Joan G. Stark"},{type:"item",name:"floppyDisk",art:String.raw` 
+    `,
+    color: "Gold",
+    height: 10,
+    author: "Joan G. Stark",
+  },
+  {
+    type: "thing",
+    name: "floppyDisk",
+    art: String.raw` 
  _________________
 | | ___________ |o|
 | | ___________ | |
@@ -594,7 +1251,29 @@ o\*''.\|/.''*/o
 |    |       |   ||
 |    |       |   V|
 |____|_______|____|
-    `,color:"DarkSlateGrey",height:10,author:"Robert Craggs"},{type:"item",name:"plane",art:String.raw` 
+    `,
+    color: "DarkSlateGray",
+    height: 10,
+    author: "Robert Craggs",
+  },
+  {
+    type: "thing",
+    name: "gift",
+    art: String.raw` 
+    _  _
+ __(_\/_)__
+|____||____|
+|    ||    |
+|____||____|
+    `,
+    color: "Red",
+    height: 5,
+    author: "Laura Brown",
+  },
+  {
+    type: "thing",
+    name: "plane",
+    art: String.raw` 
             __/\__
            '==/\=='
  ____________/__\____________
@@ -603,7 +1282,33 @@ o\*''.\|/.''*/o
  /__|___|___( >< )___|___|__\
            _/.--.\_
           (/------\)
-    `,color:"Red",height:8,author:"Joan G. Stark"},{type:"item",name:"television",art:String.raw` 
+    `,
+    color: "Red",
+    height: 8,
+    author: "Joan G. Stark",
+  },
+  {
+    type: "thing",
+    name: "rocket",
+    art: String.raw`
+       A
+      / \
+      |=|
+      | |
+      | |
+     _|=|_
+    / | | \
+    | \,/ |
+    |/" "\|
+    `,
+    color: "OrangeRed",
+    height: 9,
+    author: "Joan G. Stark",
+  },
+  {
+    type: "thing",
+    name: "television",
+    art: String.raw` 
  ______________
 |,----------.  |\
 ||           |=| |
@@ -612,10 +1317,93 @@ o\*''.\|/.''*/o
 |'-----------' |/ /~/
 ~~~~~~~~~~~~~~~  /o/
                  ~~
-    `,color:"CornSilk",height:8,author:"Ojoshiro"},{type:"item",name:"tombstone",art:String.raw` 
+    `,
+    color: "Cornsilk",
+    height: 8,
+    author: "Ojoshiro",
+  },
+  {
+    type: "thing",
+    name: "tombstone",
+    art: String.raw` 
       ,-=-.
      /  +  \
      | ~~~ |
      |R.I.P|
 \vV,,|_____|,,Vv/
-    `,color:"Gray",height:5,author:"Hayley Jane Wakenshaw"},];
+    `,
+    color: "Gray",
+    height: 5,
+    author: "Hayley Jane Wakenshaw",
+  },
+  {
+    type: "banner",
+    name: "dev",
+    art: String.raw`
+  ____  _______     __
+ |  _ \| ____\ \   / /
+ | | | |  _|  \ \ / / 
+ | |_| | |___  \ V /  
+ |____/|_____|  \_/   
+    `,
+    color: "MediumPurple",
+    height: 5,
+    author: "",
+  },
+  {
+    type: "banner",
+    name: "hello",
+    art: String.raw`
+  _   _      _ _       
+ | | | | ___| | | ___  
+ | |_| |/ _ \ | |/ _ \ 
+ |  _  |  __/ | | (_) |
+ |_| |_|\___|_|_|\___/ 
+    `,
+    color: "DeepSkyBlue",
+    height: 5,
+    author: "ASCII Printer",
+  },
+  {
+    type: "banner",
+    name: "production",
+    art: String.raw`
+  ____  ____   ___  ____  
+ |  _ \|  _ \ / _ \|  _ \ 
+ | |_) | |_) | | | | | | |
+ |  __/|  _ <| |_| | |_| |
+ |_|   |_| \_\\___/|____/ 
+    `,
+    color: "LimeGreen",
+    height: 5,
+    author: "",
+  },
+  {
+    type: "banner",
+    name: "staging",
+    art: String.raw`
+  ____ _____  _    ____ _____ 
+ / ___|_   _|/ \  / ___| ____|
+ \___ \ | | / _ \| |  _|  _|  
+  ___) || |/ ___ \ |_| | |___ 
+ |____/ |_/_/   \_\____|_____|
+    `,
+    color: "DarkOrange",
+    height: 5,
+    author: "",
+  },
+  {
+    type: "banner",
+    name: "welcome",
+    art: String.raw`
+ __        __   _                          
+ \ \      / /__| | ___ ___  _ __ ___   ___ 
+  \ \ /\ / / _ \ |/ __/ _ \| '_ ' _ \ / _ \
+   \ V  V /  __/ | (_| (_) | | | | | |  __/
+    \_/\_/ \___|_|\___\___/|_| |_| |_|\___|
+    `,
+    color: "DeepSkyBlue",
+    height: 5,
+    author: "",
+  },
+];

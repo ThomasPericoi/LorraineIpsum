@@ -38,6 +38,8 @@ function generateParagraph(size = "random", intro = true) {
 function generateParagraphes(count = "random") {
   // Var(s)
   var paragraphes = "";
+  var paragraphCount;
+
   Number.isInteger(count)
     ? (paragraphCount = count)
     : (paragraphCount = getRandomIntBetween(1, 5));
