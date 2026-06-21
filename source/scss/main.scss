@@ -1,9 +1,9 @@
-@import "_imports.scss";
-@import "_usefool.scss";
-@import "_reset.scss";
-@import "_animations.scss";
-@import "_components.scss";
-@import "_intro.scss";
+@use "imports";
+@use "usefool" as *;
+@use "reset";
+@use "animations";
+@use "components";
+@use "intro";
 
 body {
   font-size: 1.25em;

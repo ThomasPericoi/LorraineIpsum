@@ -9,6 +9,48 @@ var generatedContent = document.getElementById("generated-content");
 var inputParagraphes = document.getElementById("input-paragraphes");
 var btnGenerate = document.getElementById("btn-generate");
 var btnCopy = document.getElementById("btn-copy");
+var copyButtonLabel = btnCopy.innerText;
+
+/* Helpers */
+
+async function copyToClipboard(value) {
+  var text = String(value);
+
+  if (!navigator.clipboard || !window.isSecureContext) {
+    return false;
+  }
+
+  await navigator.clipboard.writeText(text);
+
+  return true;
+}
+
+function changeTitleOnBlur(string) {
+  var originalTitle = document.title;
+
+  window.addEventListener("focus", function () {
+    document.title = originalTitle;
+  });
+
+  window.addEventListener("blur", function () {
+    document.title = string;
+  });
+}
+
+function isMobile() {
+  if (
+    navigator.userAgentData &&
+    typeof navigator.userAgentData.mobile === "boolean"
+  ) {
+    return navigator.userAgentData.mobile;
+  }
+
+  if (window.matchMedia && window.matchMedia("(pointer: coarse)").matches) {
+    return true;
+  }
+
+  return /android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent || "");
+}
 
 /* Intro */
 
@@ -26,8 +68,8 @@ function changeContent() {
   document.body.classList.add("transition");
 
   setTimeout(() => {
-    generatedContent.innerHTML = generateParagraphes(
-      parseInt(inputParagraphes.value)
+    generatedContent.innerHTML = LorraineIpsum.generateParagraphs(
+      parseInt(inputParagraphes.value),
     );
     document.body.classList.remove("transition");
   }, 600);
@@ -37,13 +79,15 @@ function copyGeneratedContent() {
   var textToCopy = generatedContent.innerText;
 
   if (typeof copyToClipboard === "function") {
-    copyToClipboard(textToCopy).then(function (copied) {
-      if (!copied) {
+    copyToClipboard(textToCopy)
+      .then(function (copied) {
+        if (!copied) {
+          copyGeneratedContentFallback(textToCopy);
+        }
+      })
+      .catch(function () {
         copyGeneratedContentFallback(textToCopy);
-      }
-    }).catch(function () {
-      copyGeneratedContentFallback(textToCopy);
-    });
+      });
     return;
   }
 
@@ -61,6 +105,21 @@ function copyGeneratedContentFallback(textToCopy) {
   temporaryTextarea.select();
   document.execCommand("copy");
   document.body.removeChild(temporaryTextarea);
+  return true;
+}
+
+function setCopyFeedback() {
+  btnCopy.innerText = "Copié !";
+  btnCopy.setAttribute("aria-label", "Texte copié");
+
+  setTimeout(function () {
+    btnCopy.innerText = copyButtonLabel;
+    btnCopy.setAttribute("aria-label", "Copier le texte généré");
+  }, 1400);
+}
+
+function limitParagraphInput() {
+  inputParagraphes.value = inputParagraphes.value.slice(0, 2);
 }
 
 btnGenerate.addEventListener("click", () => {
@@ -68,13 +127,16 @@ btnGenerate.addEventListener("click", () => {
 });
 
 document.addEventListener("keyup", function (event) {
-  if (event.keyCode === 13) {
+  if (event.key === "Enter") {
     changeContent();
   }
 });
 
+inputParagraphes.addEventListener("input", limitParagraphInput);
+
 btnCopy.addEventListener("click", () => {
   copyGeneratedContent();
+  setCopyFeedback();
 });
 
 /* Init */

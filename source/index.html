@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr-FR" dir="ltr" prefix="og: http://ogp.me/ns#">
   <head>
     <!-- Basics -->
@@ -102,13 +102,20 @@
             type="number"
             min="3"
             max="99"
-            onkeypress="if(this.value.length==2) return false;"
             placeholder=".."
+            aria-label="Nombre de paragraphes"
           />
           <label for="input-paragraphes">¶</label>
         </div>
-        <button id="btn-generate" class="btn" value="Small">Générer</button>
-        <button id="btn-copy" class="btn" value="Copy">Copier</button>
+        <button id="btn-generate" class="btn" type="button">Générer</button>
+        <button
+          id="btn-copy"
+          class="btn"
+          type="button"
+          aria-label="Copier le texte généré"
+        >
+          Copier
+        </button>
       </div>
     </div>
 

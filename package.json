@@ -6,8 +6,11 @@
   "scripts": {
     "build": "gulp build",
     "build:prod": "gulp build --production",
-    "check": "npm run build:prod && node --check build/js/main.js",
+    "check": "npm run lint && npm test && npm run build:prod && node --check build/js/main.js",
     "dev": "gulp",
+    "format": "prettier --write \"*.{js,json,md}\" \"source/index.html\" \"source/scss/**/*.scss\" \"source/js/frontend.js\" \"source/js/lorraine-ipsum/*.js\" \"test/**/*.js\"",
+    "lint": "prettier --check \"*.{js,json,md}\" \"source/index.html\" \"source/scss/**/*.scss\" \"source/js/frontend.js\" \"source/js/lorraine-ipsum/*.js\" \"test/**/*.js\"",
+    "test": "node test/lorraine-ipsum.test.js",
     "watch": "gulp watch"
   },
   "keywords": [
@@ -36,6 +39,7 @@
     "gulp-concat": "^2.6.1",
     "gulp-sass": "^6.0.1",
     "gulp-terser": "^2.1.0",
+    "prettier": "^3.7.4",
     "sass": "^1.101.0"
   }
 }
