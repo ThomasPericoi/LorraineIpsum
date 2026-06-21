@@ -2,117 +2,104 @@
 
 # Lorraine Ipsum
 
-Attention, ca routche ! Lorraine Ipsum est un generateur de faux texte inspire du
-classique Lorem Ipsum, mais compose avec des noms de villes et communes de
-Lorraine.
+Lorraine Ipsum est un générateur de faux texte façon Lorem Ipsum, composé de
+noms de villes et communes de Lorraine.
 
-Le site permet de generer rapidement un ou plusieurs paragraphes de texte pour
-remplir une maquette, tester une mise en page ou ajouter une petite touche
-lorraine a un prototype.
+Le projet tient volontairement dans un format compact : un site statique, une
+petite API JavaScript, un build Gulp moderne et peu de dépendances.
 
-## Le site
-
-Le site propose une interface simple :
-
-- un champ pour choisir le nombre de paragraphes ;
-- un bouton pour generer un nouveau texte ;
-- un bouton pour copier le resultat ;
-- une introduction animee avant d'arriver sur le generateur.
-
-La version publique est disponible ici :
+## Démo
 
 <https://lorraineipsum.fr/>
 
+## Fonctionnalités
+
+- Génération d'un ou plusieurs paragraphes.
+- Texte basé sur une liste de communes lorraines.
+- Bouton de copie dans le presse-papiers.
+- Interface statique légère, sans framework front-end.
+- Bundle CSS et JavaScript généré dans `build/`.
+
 ## API JavaScript
 
-Le generateur expose deux fonctions principales dans
+Le générateur expose deux fonctions dans
 `source/js/lorraine-ipsum/lorraine-ipsum.js`.
 
 ### `generateParagraph(size = "random", intro = true)`
 
-Genere un paragraphe HTML contenant des noms de villes lorraines.
-
-Parametres :
-
-- `size` : nombre approximatif de mots a generer. Si la valeur est `"random"`,
-  la taille est choisie aleatoirement.
-- `intro` : ajoute ou non l'introduction `<b>Lorraine Ipsum</b>` au debut du
-  paragraphe.
-
-Exemple :
+Génère un paragraphe HTML.
 
 ```js
 generateParagraph(20);
 ```
 
-Retourne une chaine HTML :
-
-```html
-<p><b>Lorraine Ipsum</b> Nancy Metz Verdun ...</p>
-```
+`size` définit le nombre approximatif de mots. `intro` ajoute ou retire
+l'introduction `<b>Lorraine Ipsum</b>`.
 
 ### `generateParagraphes(count = "random")`
 
-Genere plusieurs paragraphes HTML.
-
-Parametres :
-
-- `count` : nombre de paragraphes a generer. Si la valeur est `"random"`, le
-  nombre de paragraphes est choisi aleatoirement entre 1 et 5.
-
-Exemple :
+Génère plusieurs paragraphes HTML.
 
 ```js
 generateParagraphes(3);
 ```
 
-Retourne une chaine HTML contenant plusieurs balises `<p>`.
+Si `count` vaut `"random"`, le générateur produit entre 1 et 5 paragraphes.
 
-## Utilisation dans une page
+## Utilisation
 
-Pour utiliser l'API dans une page HTML, il faut charger les dependances dans le
-bon ordre :
-
-```html
-<script src="js/usefool.js"></script>
-<script src="js/lorraine-ipsum/lorraine-ipsum-lib.js"></script>
-<script src="js/lorraine-ipsum/lorraine-ipsum.js"></script>
-```
-
-Puis appeler le generateur :
-
-```js
-document.getElementById("content").innerHTML = generateParagraphes(3);
-```
-
-## Developpement
-
-Installer les dependances :
+Installer les dépendances :
 
 ```bash
 npm install
 ```
 
-Generer le site dans le dossier `build/` :
+Lancer le mode développement :
 
 ```bash
-npx gulp build
+npm run dev
 ```
 
-Lancer le mode watch :
+Générer le site :
 
 ```bash
-npx gulp
+npm run build
 ```
+
+Générer une version minifiée :
+
+```bash
+npm run build:prod
+```
+
+Vérifier le build :
+
+```bash
+npm run check
+```
+
+## Stack
+
+- HTML, SCSS et JavaScript vanilla.
+- Gulp 5 pour copier, compiler et concaténer les sources.
+- Dart Sass via `gulp-sass`.
+- `gulp-clean-css` pour minifier le CSS.
+- `gulp-terser` pour minifier le JavaScript.
 
 ## Structure
 
-- `source/index.html` : page HTML source ;
-- `source/scss/` : styles SCSS ;
-- `source/js/frontend.js` : interactions de l'interface ;
-- `source/js/lorraine-ipsum/lorraine-ipsum-lib.js` : liste des villes ;
-- `source/js/lorraine-ipsum/lorraine-ipsum.js` : API de generation ;
-- `build/` : fichiers generes pour le site.
+```text
+source/
+  index.html
+  img/
+  js/
+    frontend.js
+    lorraine-ipsum/
+      lorraine-ipsum-lib.js
+      lorraine-ipsum.js
+  scss/
+build/
+```
 
 ## Licence
 
