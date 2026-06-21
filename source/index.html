@@ -1,18 +1,16 @@
 <!doctype html>
-<html lang="fr-FR" dir="ltr" prefix="og: http://ogp.me/ns#">
+<html lang="fr-FR" dir="ltr">
   <head>
     <!-- Basics -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" href="css/main.css" />
     <link rel="icon" type="image/png" href="img/favicon.png" />
 
     <!-- For robots & browsers -->
     <meta name="robots" content="index,follow" />
     <meta name="googlebot" content="index,follow" />
     <meta name="google" content="notranslate" />
-    <meta name="google-site-verification" content="verification_token" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
     <!-- Content -->
     <title>
@@ -28,6 +26,9 @@
 
     <!-- Open Graph Protocol -->
     <meta property="og:type" content="website" />
+    <meta property="og:title" content="Lorraine Ipsum" />
+    <meta property="og:url" content="https://lorraineipsum.fr/" />
+    <meta property="og:locale" content="fr_FR" />
     <meta
       property="og:description"
       content="Lorraine Ipsum - Attention, ça routche ! Ui, c'est un Lorem Ipsum, mais
@@ -37,38 +38,13 @@
       property="og:image"
       content="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Flag_of_Lorraine.svg/1200px-Flag_of_Lorraine.svg.png"
     />
+    <meta name="twitter:card" content="summary_large_image" />
 
     <!-- Chrome Theme -->
     <meta name="theme-color" content="#ffb301" />
-
-    <!-- Google Tag Manager -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-WCK8MBG");
-    </script>
-    <!-- End Google Tag Manager -->
   </head>
 
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-WCK8MBG"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
     <div id="intro">
       <img
         class="intro-image fade-in"
@@ -76,16 +52,23 @@
         alt="Drapeau de la Lorraine"
       />
       <h1 class="fade-in">Lorraine Ipsum</h1>
-      <button id="btn-start" class="btn" value="Start">Ça gèths ?</button>
+      <button
+        id="btn-start"
+        class="btn"
+        type="button"
+        aria-label="Commencer le générateur"
+      >
+        Commencer
+      </button>
 
       <div class="credits">
-        Mamaillé par
+        Créé par
         <a
           href="https://thomaspericoi.com/"
           target="_blank"
+          rel="noopener noreferrer"
           id="btn-credits"
           title="Le site de Thomas Pericoi"
-          alt="Allez sur thomaspericoi.com"
           >Thomas Pericoi</a
         >
       </div>
@@ -123,9 +106,15 @@
         >
           Copier
         </button>
+        <p
+          id="copy-status"
+          class="sr-only"
+          aria-live="polite"
+          aria-atomic="true"
+        ></p>
       </div>
     </div>
 
-    <script type="text/javascript" src="js/main.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

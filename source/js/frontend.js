@@ -10,6 +10,7 @@ var generatedContent = document.getElementById("generated-content");
 var inputParagraphes = document.getElementById("input-paragraphes");
 var btnGenerate = document.getElementById("btn-generate");
 var btnCopy = document.getElementById("btn-copy");
+var copyStatus = document.getElementById("copy-status");
 var copyButtonLabel = btnCopy.innerText;
 var focusableSelector = [
   "a[href]",
@@ -89,7 +90,7 @@ function setSectionAvailability(section, isAvailable) {
 
 /* Intro */
 
-btnStart.addEventListener("click", () => {
+function startGenerator() {
   setSectionAvailability(content, true);
   document.body.classList.add("started");
   btnGenerate.focus({ preventScroll: true });
@@ -98,7 +99,7 @@ btnStart.addEventListener("click", () => {
   setTimeout(() => {
     intro.style.display = "none";
   }, 800);
-});
+}
 
 /* Process */
 
@@ -106,29 +107,32 @@ function changeContent() {
   document.body.classList.add("transition");
 
   setTimeout(() => {
-    generatedContent.innerHTML =
-      LorraineIpsum.generateParagraphs(getParagraphCount());
+    renderGeneratedContent(
+      LorraineIpsum.generateParagraphs(getParagraphCount()),
+    );
     document.body.classList.remove("transition");
   }, 600);
+}
+
+function renderGeneratedContent(html) {
+  // The public API intentionally returns trusted HTML generated from internal data.
+  generatedContent.innerHTML = html;
 }
 
 function copyGeneratedContent() {
   var textToCopy = generatedContent.innerText;
 
   if (typeof copyToClipboard === "function") {
-    copyToClipboard(textToCopy)
+    return copyToClipboard(textToCopy)
       .then(function (copied) {
-        if (!copied) {
-          copyGeneratedContentFallback(textToCopy);
-        }
+        return copied || copyGeneratedContentFallback(textToCopy);
       })
       .catch(function () {
-        copyGeneratedContentFallback(textToCopy);
+        return copyGeneratedContentFallback(textToCopy);
       });
-    return;
   }
 
-  copyGeneratedContentFallback(textToCopy);
+  return Promise.resolve(copyGeneratedContentFallback(textToCopy));
 }
 
 function copyGeneratedContentFallback(textToCopy) {
@@ -140,18 +144,20 @@ function copyGeneratedContentFallback(textToCopy) {
   temporaryTextarea.style.top = "-9999px";
   document.body.appendChild(temporaryTextarea);
   temporaryTextarea.select();
-  document.execCommand("copy");
+  var copied = document.execCommand("copy");
   document.body.removeChild(temporaryTextarea);
-  return true;
+  return copied;
 }
 
 function setCopyFeedback() {
   btnCopy.innerText = "Copié !";
   btnCopy.setAttribute("aria-label", "Texte copié");
+  copyStatus.innerText = "Le texte généré a été copié.";
 
   setTimeout(function () {
     btnCopy.innerText = copyButtonLabel;
     btnCopy.setAttribute("aria-label", "Copier le texte généré");
+    copyStatus.innerText = "";
   }, 1400);
 }
 
@@ -169,31 +175,39 @@ function limitParagraphInput() {
   inputParagraphes.value = inputParagraphes.value.slice(0, 2);
 }
 
-btnGenerate.addEventListener("click", () => {
-  changeContent();
-});
+function bindEvents() {
+  btnStart.addEventListener("click", startGenerator);
 
-document.addEventListener("keyup", function (event) {
-  if (event.key === "Enter") {
-    changeContent();
-  }
-});
+  btnGenerate.addEventListener("click", changeContent);
 
-inputParagraphes.addEventListener("input", limitParagraphInput);
+  inputParagraphes.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      changeContent();
+    }
+  });
 
-btnCopy.addEventListener("click", () => {
-  copyGeneratedContent();
-  setCopyFeedback();
-});
+  inputParagraphes.addEventListener("input", limitParagraphInput);
 
-/* Init */
+  btnCopy.addEventListener("click", function () {
+    copyGeneratedContent().then(function (copied) {
+      if (copied) {
+        setCopyFeedback();
+      }
+    });
+  });
+}
 
-setSectionAvailability(intro, true);
-setSectionAvailability(content, false);
+function init() {
+  setSectionAvailability(intro, true);
+  setSectionAvailability(content, false);
+  bindEvents();
 
-document.addEventListener("DOMContentLoaded", function () {
   AsciiPrinter.printRandom();
   if (!isMobile()) {
     changeTitleOnBlur("A la royotte !");
   }
-});
+}
+
+/* Init */
+
+document.addEventListener("DOMContentLoaded", init);

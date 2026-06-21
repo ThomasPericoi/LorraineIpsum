@@ -27,6 +27,10 @@ petite API JavaScript documentée, un build Gulp moderne et peu de dépendances.
 Le générateur expose un objet global `LorraineIpsum` dans
 `source/js/lorraine-ipsum/lorraine-ipsum-functions.js`.
 
+Les méthodes de génération retournent volontairement des chaînes HTML, prêtes à
+être injectées dans une page. Le contenu généré repose uniquement sur les
+données internes du projet.
+
 ### `LorraineIpsum.generateParagraph(size = "random", intro = true)`
 
 Génère un paragraphe HTML.
@@ -80,6 +84,7 @@ Exemple d'intégration :
 ```html
 <script src="lorraine-ipsum.js"></script>
 <script>
+  // L'API retourne du HTML généré depuis les données internes du projet.
   document.body.innerHTML = LorraineIpsum.generateParagraphs(3);
 </script>
 ```
