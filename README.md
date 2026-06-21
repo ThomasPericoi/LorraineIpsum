@@ -140,6 +140,12 @@ source/
       lorraine-ipsum-lib.js
       lorraine-ipsum-functions.js
   scss/
+    _settings.scss
+    _reset.scss
+    _animations.scss
+    _components.scss
+    _intro.scss
+    _layout.scss
 build/
 dist/
   lorraine-ipsum.js

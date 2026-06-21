@@ -68,9 +68,8 @@ function changeContent() {
   document.body.classList.add("transition");
 
   setTimeout(() => {
-    generatedContent.innerHTML = LorraineIpsum.generateParagraphs(
-      parseInt(inputParagraphes.value),
-    );
+    generatedContent.innerHTML =
+      LorraineIpsum.generateParagraphs(getParagraphCount());
     document.body.classList.remove("transition");
   }, 600);
 }
@@ -116,6 +115,16 @@ function setCopyFeedback() {
     btnCopy.innerText = copyButtonLabel;
     btnCopy.setAttribute("aria-label", "Copier le texte généré");
   }, 1400);
+}
+
+function getParagraphCount() {
+  var value = parseInt(inputParagraphes.value, 10);
+
+  if (!Number.isFinite(value)) {
+    return "random";
+  }
+
+  return Math.min(Math.max(value, 1), 99);
 }
 
 function limitParagraphInput() {

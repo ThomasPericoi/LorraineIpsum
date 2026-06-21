@@ -97,15 +97,22 @@
       </div>
       <div class="options">
         <div class="input">
+          <label class="sr-only" for="input-paragraphes">
+            Nombre de paragraphes
+          </label>
           <input
             id="input-paragraphes"
             type="number"
-            min="3"
+            min="1"
             max="99"
-            placeholder=".."
-            aria-label="Nombre de paragraphes"
+            value="3"
+            inputmode="numeric"
+            aria-describedby="paragraphes-help"
           />
-          <label for="input-paragraphes">¶</label>
+          <span class="input-symbol" aria-hidden="true">¶</span>
+          <p id="paragraphes-help" class="sr-only">
+            Indiquez le nombre de paragraphes à générer, entre 1 et 99.
+          </p>
         </div>
         <button id="btn-generate" class="btn" type="button">Générer</button>
         <button

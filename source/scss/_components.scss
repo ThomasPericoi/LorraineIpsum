@@ -1,23 +1,29 @@
 /*____________________________________ COMPONENTS ____________________________________*/
-@use "usefool" as *;
+@use "settings" as *;
 
 .btn {
-  padding: 1.15rem 2rem;
+  min-width: 130px;
+  padding: 1.15rem $space-xl;
   position: relative;
+
+  flex: 0 1 auto;
+
+  isolation: isolate;
 
   font-size: 0.7em;
   font-weight: 600;
-  color: #111;
-  letter-spacing: 0.15em;
+  color: $color-black;
+  line-height: 1;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
 
   background-color: transparent;
-  border: 2px solid #111;
+  border: 2px solid $color-black;
 
   overflow: hidden;
 
-  &:before {
+  &::before {
     content: "";
 
     width: 100%;
@@ -28,15 +34,19 @@
 
     display: block;
 
-    background-color: #111;
+    background-color: $color-black;
 
     transform: translateY(calc(100% - 3px));
-    transition: transform 0.4s;
+    transition: transform $transition-medium;
+    z-index: -1;
   }
 
-  &:hover {
-    &:before {
-      transform: translateY(-100%);
+  &:hover,
+  &:focus-visible {
+    color: $color-lorraine-yellow;
+
+    &::before {
+      transform: translateY(0);
     }
   }
 }
@@ -44,27 +54,29 @@
 .input {
   position: relative;
 
+  flex: 0 0 auto;
+
   font-weight: 600;
   font-size: 0.8em;
-  color: #111;
-  letter-spacing: 0.15em;
+  color: $color-black;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 
-  @media screen and (min-width: $xs-max) {
+  @media screen and (min-width: $breakpoint-small) {
     font-size: 0.65em;
   }
 
   input {
-    width: 27px;
-    height: 27px;
-    padding: 0.9rem 1rem 1.1rem 1rem;
+    width: 4.75rem;
+    min-height: 3.75rem;
+    padding: 0.85rem 1.6rem 0.85rem 0.9rem;
 
-    font-family: $primary-font;
+    font-family: $font-primary;
+    text-align: center;
 
-    background-color: #ffe44a;
-    border: 2px dashed #111;
+    background-color: $color-lorraine-yellow-light;
+    border: 2px dashed $color-black;
     border-radius: 45px;
-    outline: 0;
 
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
@@ -76,11 +88,14 @@
     }
   }
 
-  label {
+  .input-symbol {
     position: absolute;
-    top: 1.35rem;
-    right: 0.9rem;
+    top: 50%;
+    right: 0.95rem;
 
-    font-family: sans-serif;
+    font-family: $font-ui;
+    pointer-events: none;
+
+    transform: translateY(-50%);
   }
 }

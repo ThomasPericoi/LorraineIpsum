@@ -1,0 +1,61 @@
+/*____________________________________ LAYOUT ____________________________________*/
+@use "settings" as *;
+
+body {
+  font-size: 1.25em;
+  background-color: $color-lorraine-yellow;
+  overflow: hidden;
+
+  &.started {
+    overflow: auto;
+  }
+
+  @media screen and (min-width: $breakpoint-small) {
+    font-size: 1.5em;
+  }
+}
+
+#content {
+  opacity: 0;
+
+  transition: opacity 1.2s ease 1s;
+
+  .started & {
+    opacity: 1;
+  }
+
+  #generated-content {
+    max-width: $content-max-width;
+    padding: $space-lg;
+    margin: 0 auto 130px auto;
+
+    opacity: 1;
+
+    transition: opacity 600ms ease;
+
+    .transition & {
+      opacity: 0;
+    }
+
+    @media screen and (min-width: $breakpoint-small) {
+      padding: 50px;
+      margin-bottom: 110px;
+    }
+  }
+
+  .options {
+    width: 100%;
+    min-height: 100px;
+    padding: $space-md;
+    position: fixed;
+    bottom: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: $space-sm;
+
+    background: $color-lorraine-yellow;
+  }
+}
