@@ -27,46 +27,108 @@ petite API JavaScript documentée, un build Gulp moderne et peu de dépendances.
 Le générateur expose un objet global `LorraineIpsum` dans
 `source/js/lorraine-ipsum/lorraine-ipsum-functions.js`.
 
-L'API expose des méthodes texte et des méthodes HTML. Les méthodes HTML
-retournent volontairement des chaînes prêtes à être injectées dans une page. Le
-contenu généré repose uniquement sur les données internes du projet.
+L'API expose des méthodes texte, des méthodes HTML et quelques helpers pour
+accéder à la liste des villes. Les méthodes HTML retournent volontairement des
+chaînes prêtes à être injectées dans une page. Le contenu généré repose
+uniquement sur les données internes du projet.
 
-### `LorraineIpsum.generateParagraphText(size = "random", intro = true)`
+### Quelle fonction utiliser ?
 
-Génère un paragraphe en texte brut.
+| Besoin                                      | Fonction                             |
+| ------------------------------------------- | ------------------------------------ |
+| Générer un paragraphe en texte brut         | `generateParagraphText(size, intro)` |
+| Générer plusieurs paragraphes en texte brut | `generateParagraphTexts(count)`      |
+| Générer un paragraphe HTML                  | `generateParagraph(size, intro)`     |
+| Générer plusieurs paragraphes HTML          | `generateParagraphs(count)`          |
+| Récupérer une ville aléatoire               | `getRandomCity()`                    |
+| Récupérer une ville par index               | `getCityById(cityId)`                |
+| Récupérer toutes les villes                 | `listCities()` ou `cities`           |
+| Lire la version de l'API                    | `version`                            |
+
+### Texte brut
+
+Utilise les fonctions texte quand tu veux afficher le résultat avec le DOM, le
+copier dans le presse-papiers, l'envoyer dans une API ou garder le contrôle sur
+le HTML généré.
+
+#### `LorraineIpsum.generateParagraphText(size = "random", intro = true)`
+
+Génère un paragraphe en texte brut. `size` définit le nombre approximatif de
+mots. `intro` ajoute ou retire l'introduction `Lorraine Ipsum`.
 
 ```js
 LorraineIpsum.generateParagraphText(20);
+// "Lorraine Ipsum Nancy Metz Verdun..."
+
+LorraineIpsum.generateParagraphText(20, false);
+// "Nancy Metz Verdun..."
 ```
 
-### `LorraineIpsum.generateParagraphTexts(count = "random")`
+#### `LorraineIpsum.generateParagraphTexts(count = "random")`
 
 Génère plusieurs paragraphes en texte brut, sous forme de tableau.
 
 ```js
 LorraineIpsum.generateParagraphTexts(3);
+// ["Lorraine Ipsum ...", "Nancy Metz ...", "Verdun Toul ..."]
 ```
 
-### `LorraineIpsum.generateParagraph(size = "random", intro = true)`
+Si `count` vaut `"random"`, le générateur produit entre 1 et 5 paragraphes.
+
+### HTML
+
+Utilise les fonctions HTML quand tu veux intégrer rapidement le résultat dans
+une page. Elles retournent des chaînes contenant des balises `<p>` et, pour le
+premier paragraphe avec introduction, `<b>`.
+
+#### `LorraineIpsum.generateParagraph(size = "random", intro = true)`
 
 Génère un paragraphe HTML.
 
 ```js
 LorraineIpsum.generateParagraph(20);
+// "<p><b>Lorraine Ipsum</b> Nancy Metz Verdun...</p>"
 ```
 
 `size` définit le nombre approximatif de mots. `intro` ajoute ou retire
 l'introduction `<b>Lorraine Ipsum</b>`.
 
-### `LorraineIpsum.generateParagraphs(count = "random")`
+#### `LorraineIpsum.generateParagraphs(count = "random")`
 
 Génère plusieurs paragraphes HTML.
 
 ```js
 LorraineIpsum.generateParagraphs(3);
+// "<p><b>Lorraine Ipsum</b> ...</p><p>...</p><p>...</p>"
 ```
 
 Si `count` vaut `"random"`, le générateur produit entre 1 et 5 paragraphes.
+
+### Villes
+
+Utilise ces helpers si tu veux construire ta propre interface ou ton propre
+format de sortie à partir de la liste des communes.
+
+```js
+LorraineIpsum.getRandomCity();
+// "Nancy"
+
+LorraineIpsum.getCityById(0);
+// Première ville de la liste, ou null si l'index n'existe pas.
+
+LorraineIpsum.listCities();
+// Copie du tableau complet des villes.
+
+LorraineIpsum.cities;
+// Même résultat que listCities().
+```
+
+### Version
+
+```js
+LorraineIpsum.version;
+// "1.0.0"
+```
 
 Pour réutiliser le générateur dans un autre projet, deux options sont
 disponibles.
