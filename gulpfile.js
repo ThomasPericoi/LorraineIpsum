@@ -82,8 +82,7 @@ gulp.task("js", function () {
   if (!devBuild) {
     jsbuild = jsbuild.pipe(
       terser({
-        compress: {
-        },
+        compress: {},
       }),
     );
     console.log("Minifying JS");

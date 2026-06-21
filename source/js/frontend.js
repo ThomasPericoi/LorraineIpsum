@@ -190,7 +190,7 @@ function bindEvents() {
 
   btnCopy.addEventListener("click", function () {
     copyGeneratedContent().then(function (copied) {
-      if (copied) { 
+      if (copied) {
         setCopyFeedback();
         return;
       }

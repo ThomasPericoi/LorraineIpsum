@@ -20,7 +20,7 @@
     "gulp"
   ],
   "author": "Thomas Pericoi",
-  "license": "ISC",
+  "license": "MIT",
   "engines": {
     "node": ">=20.19"
   },

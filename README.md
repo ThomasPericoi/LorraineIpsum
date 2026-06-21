@@ -258,4 +258,5 @@ dist/
 
 ## Licence
 
-ISC
+Ce projet est distribué sous licence MIT. Vous pouvez l'utiliser, le modifier et
+le redistribuer librement.

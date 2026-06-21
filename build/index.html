@@ -1,94 +1,148 @@
 <!doctype html>
 <html lang="fr-FR" dir="ltr">
+  <head>
+    <!-- Basics -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="icon" type="image/png" href="img/favicon.png" />
 
-<head>
-  <!-- Basics -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="icon" type="image/png" href="img/favicon.png" />
+    <!-- For robots & browsers -->
+    <meta name="robots" content="index,follow" />
+    <meta name="googlebot" content="index,follow" />
+    <meta name="google" content="notranslate" />
 
-  <!-- For robots & browsers -->
-  <meta name="robots" content="index,follow" />
-  <meta name="googlebot" content="index,follow" />
-  <meta name="google" content="notranslate" />
+    <!-- Content -->
+    <title>
+      Lorraine Ipsum - Attention, ça routche ! Ui, un Lorem Ipsum, mais pour les
+      Lorrains
+    </title>
+    <meta name="author" content="Thomas Pericoi" />
+    <meta
+      name="description"
+      content="Lorraine Ipsum - Attention, ça routche ! Ui, c'est un Lorem Ipsum, mais
+      pour les Lorrains"
+    />
 
-  <!-- Content -->
-  <title>
-    Lorraine Ipsum - Attention, ça routche ! Ui, un Lorem Ipsum, mais pour les
-    Lorrains
-  </title>
-  <meta name="author" content="Thomas Pericoi" />
-  <meta name="description" content="Lorraine Ipsum - Attention, ça routche ! Ui, c'est un Lorem Ipsum, mais
-      pour les Lorrains" />
+    <!-- Open Graph Protocol -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Lorraine Ipsum" />
+    <meta property="og:url" content="https://lorraineipsum.fr/" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta
+      property="og:description"
+      content="Lorraine Ipsum - Attention, ça routche ! Ui, c'est un Lorem Ipsum, mais
+      pour les Lorrains"
+    />
+    <meta
+      property="og:image"
+      content="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Flag_of_Lorraine.svg/1200px-Flag_of_Lorraine.svg.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Open Graph Protocol -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Lorraine Ipsum" />
-  <meta property="og:url" content="https://lorraineipsum.fr/" />
-  <meta property="og:locale" content="fr_FR" />
-  <meta property="og:description" content="Lorraine Ipsum - Attention, ça routche ! Ui, c'est un Lorem Ipsum, mais
-      pour les Lorrains" />
-  <meta property="og:image"
-    content="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Flag_of_Lorraine.svg/1200px-Flag_of_Lorraine.svg.png" />
-  <meta name="twitter:card" content="summary_large_image" />
+    <!-- Chrome Theme -->
+    <meta name="theme-color" content="#ffb301" />
+  </head>
 
-  <!-- Chrome Theme -->
-  <meta name="theme-color" content="#ffb301" />
-</head>
+  <body>
+    <noscript>
+      <p class="noscript-message">
+        Lorraine Ipsum nécessite JavaScript pour générer du texte.
+      </p>
+    </noscript>
 
-<body>
-  <noscript>
-    <p class="noscript-message">
-      Lorraine Ipsum nécessite JavaScript pour générer du texte.
-    </p>
-  </noscript>
-
-  <div id="intro">
-    <img class="intro-image fade-in" src="img/lorraineFlag.svg" width="130" height="130" alt="Drapeau de la Lorraine" />
-    <h1 class="fade-in">Lorraine Ipsum</h1>
-    <button id="btn-start" class="btn" type="button" aria-label="Commencer le générateur">
-      Commencer
-    </button>
-    <a class="icon-link" href="https://github.com/ThomasPericoi/LorraineIpsum" target="_blank" rel="noopener noreferrer"
-      title="Voir le dépôt GitHub" aria-label="Voir le dépôt GitHub de Lorraine Ipsum">
-      <svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24">
-        <path fill="currentColor"
-          d="M12 2C6.48 2 2 6.58 2 12.24c0 4.52 2.87 8.35 6.84 9.71.5.09.68-.22.68-.49v-1.9c-2.78.62-3.37-1.22-3.37-1.22-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.39 9.39 0 0 1 12 6.94c.85 0 1.71.12 2.51.34 1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9v2.81c0 .27.18.59.69.49A10.18 10.18 0 0 0 22 12.24C22 6.58 17.52 2 12 2Z" />
-      </svg>
-    </a>
-
-    <div class="credits">
-      Créé par
-      <a href="https://thomaspericoi.com/" target="_blank" rel="noopener noreferrer" id="btn-credits">Thomas Pericoi</a>
-    </div>
-  </div>
-
-  <div id="content" inert aria-hidden="true">
-    <div id="generated-content">
-      <p><b>Lorraine Ipsum</b></p>
-    </div>
-    <div class="options">
-      <div class="input">
-        <label class="sr-only" for="paragraphs-input">
-          Nombre de paragraphes
-        </label>
-        <input id="paragraphs-input" type="number" min="1" max="99" value="3" inputmode="numeric"
-          aria-describedby="paragraphs-help" />
-        <span class="input-symbol" aria-hidden="true">¶</span>
-        <p id="paragraphs-help" class="sr-only">
-          Indiquez le nombre de paragraphes à générer, entre 1 et 99.
-        </p>
-      </div>
-      <button id="btn-generate" class="btn" type="button">Générer</button>
-      <button id="btn-copy" class="btn" type="button" aria-label="Copier le texte généré">
-        Copier
+    <div id="intro">
+      <img
+        class="intro-image fade-in"
+        src="img/lorraineFlag.svg"
+        width="130"
+        height="130"
+        alt="Drapeau de la Lorraine"
+      />
+      <h1 class="fade-in">Lorraine Ipsum</h1>
+      <button
+        id="btn-start"
+        class="btn"
+        type="button"
+        aria-label="Commencer le générateur"
+      >
+        Commencer
       </button>
-      <p id="copy-status" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+      <a
+        class="icon-link"
+        href="https://github.com/ThomasPericoi/LorraineIpsum"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Voir le dépôt GitHub"
+        aria-label="Voir le dépôt GitHub de Lorraine Ipsum"
+      >
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="currentColor"
+            d="M12 2C6.48 2 2 6.58 2 12.24c0 4.52 2.87 8.35 6.84 9.71.5.09.68-.22.68-.49v-1.9c-2.78.62-3.37-1.22-3.37-1.22-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.39 9.39 0 0 1 12 6.94c.85 0 1.71.12 2.51.34 1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9v2.81c0 .27.18.59.69.49A10.18 10.18 0 0 0 22 12.24C22 6.58 17.52 2 12 2Z"
+          />
+        </svg>
+      </a>
+
+      <div class="credits">
+        Créé par
+        <a
+          href="https://thomaspericoi.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          id="btn-credits"
+          >Thomas Pericoi</a
+        >
+      </div>
     </div>
-  </div>
 
-  <script src="js/main.js"></script>
-</body>
+    <div id="content" inert aria-hidden="true">
+      <div id="generated-content">
+        <p><b>Lorraine Ipsum</b></p>
+      </div>
+      <div class="options">
+        <div class="input">
+          <label class="sr-only" for="paragraphs-input">
+            Nombre de paragraphes
+          </label>
+          <input
+            id="paragraphs-input"
+            type="number"
+            min="1"
+            max="99"
+            value="3"
+            inputmode="numeric"
+            aria-describedby="paragraphs-help"
+          />
+          <span class="input-symbol" aria-hidden="true">¶</span>
+          <p id="paragraphs-help" class="sr-only">
+            Indiquez le nombre de paragraphes à générer, entre 1 et 99.
+          </p>
+        </div>
+        <button id="btn-generate" class="btn" type="button">Générer</button>
+        <button
+          id="btn-copy"
+          class="btn"
+          type="button"
+          aria-label="Copier le texte généré"
+        >
+          Copier
+        </button>
+        <p
+          id="copy-status"
+          class="sr-only"
+          aria-live="polite"
+          aria-atomic="true"
+        ></p>
+      </div>
+    </div>
 
+    <script src="js/main.js"></script>
+  </body>
 </html>
