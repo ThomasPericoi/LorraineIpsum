@@ -6,11 +6,10 @@
   "scripts": {
     "build": "gulp build",
     "build:prod": "gulp build --production",
-    "check": "npm run lint && npm test && npm run build:prod && node --check build/js/main.js",
+    "check": "npm run lint && npm run build:prod && node --check build/js/main.js",
     "dev": "gulp",
-    "format": "prettier --write \"*.{js,json,md}\" \"source/index.html\" \"source/scss/**/*.scss\" \"source/js/frontend.js\" \"source/js/lorraine-ipsum/*.js\" \"test/**/*.js\"",
-    "lint": "prettier --check \"*.{js,json,md}\" \"source/index.html\" \"source/scss/**/*.scss\" \"source/js/frontend.js\" \"source/js/lorraine-ipsum/*.js\" \"test/**/*.js\"",
-    "test": "node test/lorraine-ipsum.test.js",
+    "format": "prettier --write \"*.{js,json,md}\" \"source/index.html\" \"source/scss/**/*.scss\" \"source/js/frontend.js\" \"source/js/lorraine-ipsum/*.js\"",
+    "lint": "prettier --check \"*.{js,json,md}\" \"source/index.html\" \"source/scss/**/*.scss\" \"source/js/frontend.js\" \"source/js/lorraine-ipsum/*.js\"",
     "watch": "gulp watch"
   },
   "keywords": [

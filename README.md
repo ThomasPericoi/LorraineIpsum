@@ -1,4 +1,4 @@
-![Logo de Lorraine Ipsum](https://github.com/ThomasPericoi/LorraineIpsum/blob/master/lorraineipsum.svg?raw=true)
+![Logo de Lorraine Ipsum](source/img/favicon.png)
 
 # Lorraine Ipsum
 
@@ -6,8 +6,7 @@ Lorraine Ipsum est un générateur de faux texte façon Lorem Ipsum, composé de
 noms de villes et communes de Lorraine.
 
 Le projet tient volontairement dans un format compact : un site statique, une
-petite API JavaScript documentée, un build Gulp moderne, un test minimal et peu
-de dépendances.
+petite API JavaScript documentée, un build Gulp moderne et peu de dépendances.
 
 ## Démo
 
@@ -65,6 +64,26 @@ Ou charger la version all-in-one générée par Gulp :
 <script src="dist/lorraine-ipsum.js"></script>
 ```
 
+## Distribution
+
+Le dossier `dist/` contient la version prête à réutiliser de l'API JavaScript.
+Le fichier `dist/lorraine-ipsum.js` est généré par Gulp à partir de :
+
+- `source/js/lorraine-ipsum/lorraine-ipsum-lib.js`
+- `source/js/lorraine-ipsum/lorraine-ipsum-functions.js`
+
+Il embarque donc la liste des villes et les fonctions de génération dans un
+seul fichier autonome.
+
+Exemple d'intégration :
+
+```html
+<script src="lorraine-ipsum.js"></script>
+<script>
+  document.body.innerHTML = LorraineIpsum.generateParagraphs(3);
+</script>
+```
+
 ## Utilisation
 
 Installer les dépendances :
@@ -106,12 +125,6 @@ Vérifier le formatage :
 npm run lint
 ```
 
-Lancer le test de l'API :
-
-```bash
-npm test
-```
-
 Vérifier le build :
 
 ```bash
@@ -126,7 +139,6 @@ npm run check
 - `gulp-clean-css` pour minifier le CSS.
 - `gulp-terser` pour minifier le JavaScript.
 - Prettier pour garder un style cohérent.
-- Test Node natif avec `node:assert`.
 
 ## Structure
 
