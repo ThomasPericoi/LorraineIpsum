@@ -23,6 +23,10 @@
     opacity: 0;
   }
 
+  &[aria-hidden="true"] {
+    pointer-events: none;
+  }
+
   .intro-image {
     width: 130px;
     height: 130px;

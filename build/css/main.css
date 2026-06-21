@@ -115,6 +115,7 @@ b {
   text-decoration: none;
   background-color: transparent;
   border: 2px solid #111;
+  transition: color 400ms ease;
   overflow: hidden;
 }
 .btn::before {
@@ -194,6 +195,9 @@ b {
 .started #intro {
   opacity: 0;
 }
+#intro[aria-hidden=true] {
+  pointer-events: none;
+}
 #intro .intro-image {
   width: 130px;
   height: 130px;
@@ -243,6 +247,9 @@ body.started {
 }
 .started #content {
   opacity: 1;
+}
+#content[aria-hidden=true] {
+  pointer-events: none;
 }
 #content #generated-content {
   max-width: 860px;

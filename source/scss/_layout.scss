@@ -24,6 +24,10 @@ body {
     opacity: 1;
   }
 
+  &[aria-hidden="true"] {
+    pointer-events: none;
+  }
+
   #generated-content {
     max-width: $content-max-width;
     padding: $space-lg;

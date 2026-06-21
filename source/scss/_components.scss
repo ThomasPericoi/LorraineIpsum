@@ -21,6 +21,8 @@
   background-color: transparent;
   border: 2px solid $color-black;
 
+  transition: color $transition-medium;
+
   overflow: hidden;
 
   &::before {

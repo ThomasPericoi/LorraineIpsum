@@ -3,6 +3,7 @@
 /* Lorraine Ipsum Frontend */
 
 var intro = document.getElementById("intro");
+var content = document.getElementById("content");
 var btnStart = document.getElementById("btn-start");
 
 var generatedContent = document.getElementById("generated-content");
@@ -10,6 +11,14 @@ var inputParagraphes = document.getElementById("input-paragraphes");
 var btnGenerate = document.getElementById("btn-generate");
 var btnCopy = document.getElementById("btn-copy");
 var copyButtonLabel = btnCopy.innerText;
+var focusableSelector = [
+  "a[href]",
+  "button",
+  "input",
+  "select",
+  "textarea",
+  '[tabindex]:not([tabindex="-1"])',
+].join(",");
 
 /* Helpers */
 
@@ -52,10 +61,39 @@ function isMobile() {
   return /android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent || "");
 }
 
+function setSectionAvailability(section, isAvailable) {
+  var focusableElements = section.querySelectorAll(focusableSelector);
+
+  section.inert = !isAvailable;
+  section.setAttribute("aria-hidden", String(!isAvailable));
+
+  focusableElements.forEach(function (element) {
+    if (isAvailable) {
+      if ("previousTabindex" in element.dataset) {
+        element.setAttribute("tabindex", element.dataset.previousTabindex);
+        delete element.dataset.previousTabindex;
+        return;
+      }
+
+      element.removeAttribute("tabindex");
+      return;
+    }
+
+    if (element.hasAttribute("tabindex")) {
+      element.dataset.previousTabindex = element.getAttribute("tabindex");
+    }
+
+    element.setAttribute("tabindex", "-1");
+  });
+}
+
 /* Intro */
 
 btnStart.addEventListener("click", () => {
+  setSectionAvailability(content, true);
   document.body.classList.add("started");
+  btnGenerate.focus({ preventScroll: true });
+  setSectionAvailability(intro, false);
 
   setTimeout(() => {
     intro.style.display = "none";
@@ -149,6 +187,9 @@ btnCopy.addEventListener("click", () => {
 });
 
 /* Init */
+
+setSectionAvailability(intro, true);
+setSectionAvailability(content, false);
 
 document.addEventListener("DOMContentLoaded", function () {
   AsciiPrinter.printRandom();
