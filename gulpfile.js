@@ -83,7 +83,6 @@ gulp.task("js", function () {
     jsbuild = jsbuild.pipe(
       terser({
         compress: {
-          drop_console: true,
         },
       }),
     );
