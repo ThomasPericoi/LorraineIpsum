@@ -1,6 +1,6 @@
 (function (global) {
   var LORRAINE_IPSUM_VERSION = "1.0.0";
-  var LORRAINE_IPSUM_INTRO = "<b>Lorraine Ipsum</b> ";
+  var LORRAINE_IPSUM_INTRO = "Lorraine Ipsum";
   var MIN_RANDOM_WORDS = 10;
   var MAX_RANDOM_WORDS = 50;
   var MIN_RANDOM_PARAGRAPHS = 1;
@@ -74,8 +74,8 @@
     return getRandomValueFromArray(villesLorraine);
   }
 
-  function generateParagraph(size = "random", intro = true) {
-    var paragraph = intro ? LORRAINE_IPSUM_INTRO : "";
+  function generateParagraphText(size = "random", intro = true) {
+    var paragraph = intro ? LORRAINE_IPSUM_INTRO + " " : "";
     var wordCount = normalizeCount(size, MIN_RANDOM_WORDS, MAX_RANDOM_WORDS);
 
     if (intro) {
@@ -91,22 +91,50 @@
       i += 1 + countCharacter(city, " ");
     }
 
-    return `<p>${paragraph}</p>`;
+    return paragraph;
   }
 
-  function generateParagraphs(count = "random") {
+  function generateParagraphTexts(count = "random") {
     var paragraphCount = normalizeCount(
       count,
       MIN_RANDOM_PARAGRAPHS,
       MAX_RANDOM_PARAGRAPHS,
     );
-    var paragraphs = "";
+    var paragraphs = [];
 
     for (var i = 0; i < paragraphCount; i++) {
-      paragraphs += generateParagraph("random", i === 0);
+      paragraphs.push(generateParagraphText("random", i === 0));
     }
 
     return paragraphs;
+  }
+
+  function generateParagraph(size = "random", intro = true) {
+    var paragraph = generateParagraphText(size, intro);
+
+    if (intro) {
+      paragraph = paragraph.replace(
+        LORRAINE_IPSUM_INTRO,
+        `<b>${LORRAINE_IPSUM_INTRO}</b>`,
+      );
+    }
+
+    return `<p>${paragraph}</p>`;
+  }
+
+  function generateParagraphs(count = "random") {
+    return generateParagraphTexts(count)
+      .map(function (paragraph, index) {
+        if (index === 0) {
+          paragraph = paragraph.replace(
+            LORRAINE_IPSUM_INTRO,
+            `<b>${LORRAINE_IPSUM_INTRO}</b>`,
+          );
+        }
+
+        return `<p>${paragraph}</p>`;
+      })
+      .join("");
   }
 
   /*____________________________________ LORRAINE IPSUM API ____________________________________*/
@@ -119,6 +147,8 @@
     getCityById: getCityById,
     getRandomCity: getRandomCity,
     listCities: listCities,
+    generateParagraphText: generateParagraphText,
+    generateParagraphTexts: generateParagraphTexts,
     generateParagraph: generateParagraph,
     generateParagraphs: generateParagraphs,
   };

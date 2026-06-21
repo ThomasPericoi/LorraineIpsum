@@ -27,9 +27,25 @@ petite API JavaScript documentée, un build Gulp moderne et peu de dépendances.
 Le générateur expose un objet global `LorraineIpsum` dans
 `source/js/lorraine-ipsum/lorraine-ipsum-functions.js`.
 
-Les méthodes de génération retournent volontairement des chaînes HTML, prêtes à
-être injectées dans une page. Le contenu généré repose uniquement sur les
-données internes du projet.
+L'API expose des méthodes texte et des méthodes HTML. Les méthodes HTML
+retournent volontairement des chaînes prêtes à être injectées dans une page. Le
+contenu généré repose uniquement sur les données internes du projet.
+
+### `LorraineIpsum.generateParagraphText(size = "random", intro = true)`
+
+Génère un paragraphe en texte brut.
+
+```js
+LorraineIpsum.generateParagraphText(20);
+```
+
+### `LorraineIpsum.generateParagraphTexts(count = "random")`
+
+Génère plusieurs paragraphes en texte brut, sous forme de tableau.
+
+```js
+LorraineIpsum.generateParagraphTexts(3);
+```
 
 ### `LorraineIpsum.generateParagraph(size = "random", intro = true)`
 
@@ -62,7 +78,7 @@ Charger les sources séparées :
 <script src="lorraine-ipsum-functions.js"></script>
 ```
 
-Ou charger la version all-in-one générée par Gulp :
+Ou charger la version all-in-one :
 
 ```html
 <script src="dist/lorraine-ipsum.js"></script>
@@ -97,6 +113,13 @@ Installer les dépendances :
 npm install
 ```
 
+Le projet cible Node 20 ou plus récent. Avec `nvm`, la version recommandée peut
+être activée avec :
+
+```bash
+nvm use
+```
+
 Lancer le mode développement :
 
 ```bash
@@ -110,13 +133,16 @@ npm run build
 ```
 
 Le build produit aussi `dist/lorraine-ipsum.js`, une version autonome qui
-concatène la liste des villes et les fonctions de génération.
+concatène la liste des villes et les fonctions de génération. Cette commande
+garde les fichiers lisibles pour le développement.
 
 Générer une version minifiée :
 
 ```bash
 npm run build:prod
 ```
+
+Cette commande produit les fichiers optimisés pour publication.
 
 Formater les fichiers maintenus :
 

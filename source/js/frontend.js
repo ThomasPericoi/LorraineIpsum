@@ -7,7 +7,7 @@ var content = document.getElementById("content");
 var btnStart = document.getElementById("btn-start");
 
 var generatedContent = document.getElementById("generated-content");
-var inputParagraphes = document.getElementById("input-paragraphes");
+var paragraphInput = document.getElementById("input-paragraphes");
 var btnGenerate = document.getElementById("btn-generate");
 var btnCopy = document.getElementById("btn-copy");
 var copyStatus = document.getElementById("copy-status");
@@ -103,20 +103,38 @@ function startGenerator() {
 
 /* Process */
 
-function changeContent() {
+function generateContent() {
   document.body.classList.add("transition");
 
   setTimeout(() => {
     renderGeneratedContent(
-      LorraineIpsum.generateParagraphs(getParagraphCount()),
+      LorraineIpsum.generateParagraphTexts(getParagraphCount()),
     );
     document.body.classList.remove("transition");
   }, 600);
 }
 
-function renderGeneratedContent(html) {
-  // The public API intentionally returns trusted HTML generated from internal data.
-  generatedContent.innerHTML = html;
+function renderGeneratedContent(paragraphs) {
+  generatedContent.replaceChildren();
+
+  paragraphs.forEach(function (paragraph, index) {
+    var paragraphElement = document.createElement("p");
+
+    if (index === 0 && paragraph.startsWith("Lorraine Ipsum ")) {
+      var introElement = document.createElement("b");
+      var intro = "Lorraine Ipsum";
+
+      introElement.textContent = intro;
+      paragraphElement.appendChild(introElement);
+      paragraphElement.append(
+        document.createTextNode(paragraph.slice(intro.length)),
+      );
+    } else {
+      paragraphElement.textContent = paragraph;
+    }
+
+    generatedContent.appendChild(paragraphElement);
+  });
 }
 
 function copyGeneratedContent() {
@@ -161,8 +179,16 @@ function setCopyFeedback() {
   }, 1400);
 }
 
+function setCopyErrorFeedback() {
+  copyStatus.innerText = "La copie du texte a échoué.";
+
+  setTimeout(function () {
+    copyStatus.innerText = "";
+  }, 1800);
+}
+
 function getParagraphCount() {
-  var value = parseInt(inputParagraphes.value, 10);
+  var value = parseInt(paragraphInput.value, 10);
 
   if (!Number.isFinite(value)) {
     return "random";
@@ -172,27 +198,30 @@ function getParagraphCount() {
 }
 
 function limitParagraphInput() {
-  inputParagraphes.value = inputParagraphes.value.slice(0, 2);
+  paragraphInput.value = paragraphInput.value.slice(0, 2);
 }
 
 function bindEvents() {
   btnStart.addEventListener("click", startGenerator);
 
-  btnGenerate.addEventListener("click", changeContent);
+  btnGenerate.addEventListener("click", generateContent);
 
-  inputParagraphes.addEventListener("keydown", function (event) {
+  paragraphInput.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
-      changeContent();
+      generateContent();
     }
   });
 
-  inputParagraphes.addEventListener("input", limitParagraphInput);
+  paragraphInput.addEventListener("input", limitParagraphInput);
 
   btnCopy.addEventListener("click", function () {
     copyGeneratedContent().then(function (copied) {
       if (copied) {
         setCopyFeedback();
+        return;
       }
+
+      setCopyErrorFeedback();
     });
   });
 }
