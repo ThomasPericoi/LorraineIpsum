@@ -7,7 +7,7 @@ var content = document.getElementById("content");
 var btnStart = document.getElementById("btn-start");
 
 var generatedContent = document.getElementById("generated-content");
-var paragraphInput = document.getElementById("input-paragraphes");
+var paragraphsInput = document.getElementById("paragraphs-input");
 var btnGenerate = document.getElementById("btn-generate");
 var btnCopy = document.getElementById("btn-copy");
 var copyStatus = document.getElementById("copy-status");
@@ -32,6 +32,9 @@ function changeTitleOnBlur(string) {
 
   window.addEventListener("blur", function () {
     document.title = string;
+    setTimeout(function () {
+      document.title = originalTitle;
+    }, 2000);
   });
 }
 
@@ -159,7 +162,7 @@ function setCopyErrorFeedback() {
 }
 
 function getParagraphCount() {
-  var value = parseInt(paragraphInput.value, 10);
+  var value = parseInt(paragraphsInput.value, 10);
 
   if (!Number.isFinite(value)) {
     return "random";
@@ -168,8 +171,8 @@ function getParagraphCount() {
   return Math.min(Math.max(value, 1), 99);
 }
 
-function limitParagraphInput() {
-  paragraphInput.value = paragraphInput.value.slice(0, 2);
+function limitParagraphsInput() {
+  paragraphsInput.value = paragraphsInput.value.slice(0, 2);
 }
 
 function bindEvents() {
@@ -177,17 +180,17 @@ function bindEvents() {
 
   btnGenerate.addEventListener("click", generateContent);
 
-  paragraphInput.addEventListener("keydown", function (event) {
+  paragraphsInput.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
       generateContent();
     }
   });
 
-  paragraphInput.addEventListener("input", limitParagraphInput);
+  paragraphsInput.addEventListener("input", limitParagraphsInput);
 
   btnCopy.addEventListener("click", function () {
     copyGeneratedContent().then(function (copied) {
-      if (copied) {
+      if (copied) { 
         setCopyFeedback();
         return;
       }

@@ -33,7 +33,7 @@
 
     object-fit: cover;
 
-    border: 2px dashed $color-black;
+    border: 3px dashed $color-black;
     border-radius: 50%;
   }
 
@@ -47,9 +47,15 @@
     }
   }
 
+  .icon-link {
+    position: absolute;
+    top: $space-xl;
+    right: $space-xl;
+  }
+
   .credits {
     position: absolute;
-    bottom: $space-md;
+    bottom: $space-xl;
 
     font-size: 0.65em;
 
