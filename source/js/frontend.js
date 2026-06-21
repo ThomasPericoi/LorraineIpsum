@@ -23,18 +23,6 @@ var focusableSelector = [
 
 /* Helpers */
 
-async function copyToClipboard(value) {
-  var text = String(value);
-
-  if (!navigator.clipboard || !window.isSecureContext) {
-    return false;
-  }
-
-  await navigator.clipboard.writeText(text);
-
-  return true;
-}
-
 function changeTitleOnBlur(string) {
   var originalTitle = document.title;
 
@@ -137,34 +125,17 @@ function renderGeneratedContent(paragraphs) {
   });
 }
 
-function copyGeneratedContent() {
-  var textToCopy = generatedContent.innerText;
-
-  if (typeof copyToClipboard === "function") {
-    return copyToClipboard(textToCopy)
-      .then(function (copied) {
-        return copied || copyGeneratedContentFallback(textToCopy);
-      })
-      .catch(function () {
-        return copyGeneratedContentFallback(textToCopy);
-      });
+async function copyGeneratedContent() {
+  if (!navigator.clipboard || !window.isSecureContext) {
+    return false;
   }
 
-  return Promise.resolve(copyGeneratedContentFallback(textToCopy));
-}
-
-function copyGeneratedContentFallback(textToCopy) {
-  var temporaryTextarea = document.createElement("textarea");
-
-  temporaryTextarea.value = textToCopy;
-  temporaryTextarea.setAttribute("readonly", "");
-  temporaryTextarea.style.position = "fixed";
-  temporaryTextarea.style.top = "-9999px";
-  document.body.appendChild(temporaryTextarea);
-  temporaryTextarea.select();
-  var copied = document.execCommand("copy");
-  document.body.removeChild(temporaryTextarea);
-  return copied;
+  try {
+    await navigator.clipboard.writeText(generatedContent.innerText);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function setCopyFeedback() {
