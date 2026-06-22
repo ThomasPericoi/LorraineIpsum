@@ -207,7 +207,7 @@ function init() {
 
   AsciiPrinter.printRandom();
   if (!isMobile()) {
-    changeTitleOnBlur("A la royotte !");
+    changeTitleOnBlur("À la royotte !");
   }
 }
 
