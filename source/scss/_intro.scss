@@ -78,7 +78,6 @@
 .signature {
   display: inline-flex;
   align-items: center;
-  gap: $space-xxs;
 
   font-family: $font-signature;
   font-size: 0.75rem;
@@ -118,5 +117,5 @@
 }
 
 .signature-tagline {
-  transform: scaleY(2) skewX(5deg);
+  transform: scaleY(1.75) skewX(5deg);
 }
