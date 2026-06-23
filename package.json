@@ -1,6 +1,6 @@
 {
   "name": "lorraine-ipsum",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A compact Lorraine-themed Lorem Ipsum generator.",
   "private": true,
   "scripts": {

@@ -44,7 +44,7 @@ body {
   #generated-content {
     max-width: $content-max-width;
     padding: $space-lg;
-    margin: 0 auto 130px auto;
+    margin: 0 auto 100px auto;
 
     opacity: 1;
 
@@ -55,15 +55,14 @@ body {
     }
 
     @media screen and (min-width: $breakpoint-small) {
-      padding: 50px;
-      margin-bottom: 110px;
+      padding: 50px 50px 65px 50px;
     }
   }
 
   .options {
     width: 100%;
-    min-height: 100px;
-    padding: $space-md;
+    padding: $space-md $space-md
+      calc(#{$space-lg} + env(safe-area-inset-bottom));
     position: fixed;
     bottom: 0;
 

@@ -1,4 +1,4 @@
-/*____________________________________ COMPONENTS ____________________________________*/
+/*____________________________________ UI ____________________________________*/
 @use "settings" as *;
 
 .btn {
@@ -54,8 +54,8 @@
 }
 
 .icon-link {
-  width: 3rem;
-  height: 3rem;
+  width: 3.5rem;
+  height: 3.5rem;
 
   display: inline-flex;
   align-items: center;
@@ -64,19 +64,19 @@
   color: $color-black;
 
   background-color: transparent;
-  border: 2px solid $color-black;
-  border-radius: 50%;
 
   transition:
-    color $transition-fast,
-    background-color $transition-fast,
+    opacity $transition-fast,
     transform $transition-fast;
+
+  svg {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
 
   &:hover,
   &:focus-visible {
-    color: $color-lorraine-yellow;
-
-    background-color: $color-black;
+    opacity: 0.72;
 
     transform: translateY(-2px);
   }
@@ -113,9 +113,6 @@
     &::-webkit-inner-spin-button {
       -webkit-appearance: none;
       margin: 0;
-    }
-    &[type="number"] {
-      -moz-appearance: textfield;
     }
   }
 

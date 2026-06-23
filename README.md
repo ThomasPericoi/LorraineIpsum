@@ -248,7 +248,7 @@ source/
     _settings.scss
     _reset.scss
     _animations.scss
-    _components.scss
+    _ui.scss
     _intro.scss
     _layout.scss
 build/

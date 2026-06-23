@@ -204,8 +204,8 @@ function init() {
   setSectionAvailability(intro, true);
   setSectionAvailability(content, false);
   bindEvents();
-
   AsciiPrinter.printRandom();
+
   if (!isMobile()) {
     changeTitleOnBlur("À la royotte !");
   }

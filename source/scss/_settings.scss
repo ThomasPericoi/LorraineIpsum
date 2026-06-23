@@ -8,8 +8,10 @@ $color-black: #111;
 $color-focus: #005fcc;
 
 $font-primary: "Playfair Display", serif;
+$font-signature: "DynaPuff", system-ui;
 $font-ui: sans-serif;
 
+$space-xxs: 0.25rem;
 $space-xs: 0.5rem;
 $space-sm: 0.75rem;
 $space-md: 1rem;
@@ -20,4 +22,4 @@ $content-max-width: 860px;
 $breakpoint-small: 575px;
 
 $transition-fast: 180ms ease;
-$transition-medium: 400ms ease;
+$transition-medium: 300ms ease;

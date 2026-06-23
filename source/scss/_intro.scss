@@ -2,10 +2,16 @@
 @use "settings" as *;
 
 #intro {
+  height: 100vh;
+  height: 100svh;
   min-height: 100vh;
-  padding: $space-xl;
+  min-height: 100svh;
+  padding: $space-xl $space-xl calc(#{$space-xl} + env(safe-area-inset-bottom));
   position: fixed;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: auto;
+  left: 0;
 
   display: flex;
   flex-direction: column;
@@ -16,6 +22,8 @@
   z-index: 1;
 
   opacity: 1;
+
+  overflow: auto;
 
   transition: opacity 0.8s ease;
 
@@ -38,9 +46,10 @@
   }
 
   h1 {
-    text-align: center;
     margin: 0;
+
     font-size: 2em;
+    text-align: center;
 
     @media screen and (min-width: $breakpoint-small) {
       font-size: 3em;
@@ -52,15 +61,62 @@
     top: $space-xl;
     right: $space-xl;
   }
+}
 
-  .credits {
-    position: absolute;
-    bottom: $space-xl;
+.intro-footer {
+  width: 100%;
+  padding: $space-md $space-md calc(#{$space-lg} + env(safe-area-inset-bottom));
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
 
-    font-size: 0.65em;
+  display: flex;
+  justify-content: center;
+}
 
-    @media screen and (min-width: $breakpoint-small) {
-      font-size: 0.8em;
-    }
+.signature {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-xxs;
+
+  font-family: $font-signature;
+  font-size: 0.75rem;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-weight: 700;
+  text-decoration: none;
+
+  @media screen and (min-width: $breakpoint-small) {
+    font-size: 1rem;
   }
+}
+
+.signature-logo {
+  width: 2rem;
+  height: 2rem;
+
+  flex: 0 0 auto;
+
+  overflow: visible;
+
+  @media screen and (min-width: $breakpoint-small) {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+.signature-logo-pupil {
+  transform-box: fill-box;
+  transform-origin: center;
+
+  .signature:hover &,
+  .signature:focus-visible & {
+    transform: translateX(30px);
+  }
+}
+
+.signature-tagline {
+  transform: scaleY(2) skewX(5deg);
 }
