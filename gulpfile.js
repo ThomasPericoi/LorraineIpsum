@@ -27,7 +27,13 @@ gulp.task("img", function () {
 gulp.task(
   "html",
   gulp.series(gulp.parallel("img"), function () {
-    return gulp.src(folder.source + "*.html").pipe(gulp.dest(folder.build));
+    return gulp
+      .src([
+        folder.source + "*.html",
+        folder.source + "robots.txt",
+        folder.source + "sitemap.xml",
+      ])
+      .pipe(gulp.dest(folder.build));
   }),
 );
 
