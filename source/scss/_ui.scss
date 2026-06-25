@@ -5,6 +5,7 @@
   min-width: 130px;
   padding: 1.15rem $space-xl;
   position: relative;
+  overflow: hidden;
 
   flex: 0 1 auto;
 
@@ -23,8 +24,6 @@
 
   transition: color $transition-medium;
 
-  overflow: hidden;
-
   &::before {
     content: "";
 
@@ -33,6 +32,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    z-index: -1;
 
     display: block;
 
@@ -40,7 +40,6 @@
 
     transform: translateY(calc(100% - 3px));
     transition: transform $transition-medium;
-    z-index: -1;
   }
 
   &:hover,
@@ -122,8 +121,9 @@
     right: 0.95rem;
 
     font-family: $font-ui;
-    pointer-events: none;
-
+    
     transform: translateY(-50%);
+    
+    pointer-events: none;
   }
 }
