@@ -10,7 +10,7 @@ petite API JavaScript documentée, un build Gulp moderne et peu de dépendances.
 
 ## Démo
 
-<https://lorraineipsum.fr/>
+<https://lorraineipsum.thomaspericoi.com/>
 
 ## Fonctionnalités
 

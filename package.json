@@ -31,7 +31,7 @@
   "bugs": {
     "url": "https://github.com/ThomasPericoi/LorraineIpsum/issues"
   },
-  "homepage": "https://lorraineipsum.fr/",
+  "homepage": "https://lorraineipsum.thomaspericoi.com/",
   "devDependencies": {
     "gulp": "^5.0.1",
     "gulp-clean-css": "^4.3.0",
