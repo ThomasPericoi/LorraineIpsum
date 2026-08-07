@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lorraineipsum.thomaspericoi.com/sitemap.xml
+Sitemap: https://lorraine-ipsum.thomaspericoi.com/sitemap.xml
